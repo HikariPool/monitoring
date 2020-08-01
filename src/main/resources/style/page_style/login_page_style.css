@@ -1,0 +1,16 @@
+/*
+ * Copyright (c) 1.8.2020 Andrey Medvedev.
+ */
+
+.credential_input {
+    margin: 10px 10px;
+}
+
+.centredModalView > h1 {
+    margin-top: 14%;
+    margin-bottom: 13%;
+}
+
+.centredModalView > h4 {
+    margin-top: 10px;
+}
