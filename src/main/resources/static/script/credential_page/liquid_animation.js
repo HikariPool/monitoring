@@ -2,21 +2,20 @@ let lastX;
 let lastY;
 let predCoordinateIsExists = false;
 
-//todo  refactor
-function launchLiquidAnimation() {
-    if (!isMobile()) {
-        const liquid_array = document.getElementsByClassName('liquid');
-        let window = getWindowCoordinate();
+if (!isMobile()) {
+    const liquid_array = document.getElementsByClassName('liquid');
+    let window = getWindowCoordinate();
 
-        for (let i = 0; i < liquid_array.length; i++) {
-            let liquid = liquid_array.item(i);
 
-            setMouseMoveLiquidEvent(liquid);
-            setReturningInVisibleZoneListener(liquid, window);
-            clearPredCoordinateWhenMouseOut(liquid);
-        }
+    for (let i = 0; i < liquid_array.length; i++) {
+        let liquid = liquid_array.item(i);
+
+        setMouseMoveLiquidEvent(liquid);
+        setReturningInVisibleZoneListener(liquid, window);
+        clearPredCoordinateWhenMouseOut(liquid);
     }
 }
+
 
 function isMobile() {
     return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);

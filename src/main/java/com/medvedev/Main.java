@@ -13,7 +13,4 @@ public class Main {
         SpringApplication.run(Main.class, args);
     }
 }
-//// TODO: 8/1/2020 mvc for getting page
-//// TODO: 8/1/2020 rest for authentification
-//// TODO: 8/1/2020 ajax for authentification
 //// TODO: 8/1/2020 application icon
