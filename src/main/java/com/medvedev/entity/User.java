@@ -23,6 +23,7 @@ public class User implements UserDetails {
     private String password;
 
     //// TODO: 7/23/2020 implement all methods
+    //// TODO: 8/1/2020 rename table becouse user in postgres is keyword
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;

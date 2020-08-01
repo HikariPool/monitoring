@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 23.7.2020 Andrey Medvedev.
+ * Copyright (c) 1.8.2020 Andrey Medvedev.
  */
 
 package com.medvedev;
@@ -13,3 +13,7 @@ public class Main {
         SpringApplication.run(Main.class, args);
     }
 }
+//// TODO: 8/1/2020 mvc for getting page
+//// TODO: 8/1/2020 rest for authentification
+//// TODO: 8/1/2020 ajax for authentification
+//// TODO: 8/1/2020 application icon

@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 1.8.2020 Andrey Medvedev.
- */
-
 let lastX;
 let lastY;
 let predCoordinateIsExists = false;

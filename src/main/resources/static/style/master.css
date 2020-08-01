@@ -1,9 +1,5 @@
-/*
- * Copyright (c) 1.8.2020 Andrey Medvedev.
- */
-
-@import "../style/ui_element/input.css";
-@import "../style/ui_element/button.css";
+@import "ui_element/button.css";
+@import "ui_element/input.css";
 @import "font.css";
 
 
