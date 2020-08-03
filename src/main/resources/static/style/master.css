@@ -138,9 +138,10 @@ h1, h2, h3, h4 {
     color: #aaaea8;
 }
 
-p {
+a {
     cursor: pointer;
     font-weight: bold;
     font-size: 14.5px;
     color: #4EB8E0;
+    text-decoration: none;
 }

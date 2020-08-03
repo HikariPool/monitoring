@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Sign In</title>
+    <div th:replace="fragments/master :: masterHead"></div>
+    <link rel="stylesheet" th:href="@{/style/elements/centred_modal_view.css}"/>
+    <link rel="stylesheet" th:href="@{/style/page_style/sign_in_page_style.css}"/>
+</head>
+
+<body>
+<div th:replace="fragments/master :: liquids"></div>
+<div align="center" class="centredModalView">
+    <h1>Login</h1>
+    <input class="credential_input" type="text"><br>
+    <input class="credential_input" type="password"><br>
+    <button id="signUp_button">Sign in</button>
+    <br>
+    <a href="/credential/signUp">Sign up</a>
+</div>
+</body>
+<script th:replace="fragments/master :: liquid_animation"></script>
+</html>
