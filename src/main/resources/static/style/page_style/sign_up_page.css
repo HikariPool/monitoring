@@ -3,3 +3,10 @@
 .centredModalView {
     height: 66%;
 }
+
+@media (max-width: 760px) {
+    .centredModalView {
+        height: 390px;
+        transform: translate(-50%, -50%);
+    }
+}

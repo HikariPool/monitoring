@@ -20,9 +20,10 @@ body {
     transition-duration: 6s;
     background-color: #ffffff;
     border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    animation-name: liquid_animation;
+    animation-play-state: paused;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
-    animation-name: liquid_animation;
     animation-direction: alternate;
 }
 
@@ -128,7 +129,7 @@ body {
     }
 }
 
-@media (max-width: 650px) {
+@media (max-width: 760px) {
     .liquid {
         animation: none;
     }
@@ -145,6 +146,7 @@ a {
     font-size: 14.5px;
     color: #4EB8E0;
     text-decoration: none;
+    margin: 10px 10px;
 }
 
 * {

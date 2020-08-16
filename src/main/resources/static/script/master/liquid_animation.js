@@ -9,6 +9,7 @@ if (!isMobile()) {
 
     for (let i = 0; i < liquid_array.length; i++) {
         let liquid = liquid_array.item(i);
+        liquid.style.animationPlayState = 'running';
 
         setMouseMoveLiquidEvent(liquid);
         setReturningInVisibleZoneListener(liquid, window);

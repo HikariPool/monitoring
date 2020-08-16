@@ -64,7 +64,7 @@
     font-size: 15px;
 }
 
-@media (max-width: 650px) {
+@media (max-width: 760px) {
     #musicPlayerWrapper {
         left: 0px;
         width: 100%;
