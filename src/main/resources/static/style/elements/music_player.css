@@ -9,6 +9,7 @@
     z-index: 5000;
     opacity: 0.8;
     backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
     box-shadow: 0 -10px 15px rgba(0, 0, 0, 0.34);
 }
 
@@ -30,10 +31,8 @@
     height: 30px;
     width: 30px;
     margin: 10px;
-    fill: #ffffff;
     opacity: 0.5;
 }
-
 
 #musicManager {
     right: 6%;
@@ -54,11 +53,6 @@
     display: block;
     top: 0px;
     left: 150px;
-    height: 5px;
-    width: 88.4%;
-}
-
-#progressBarIndicator {
     height: 5px;
     width: 0%;
     background-color: #4EB8E0;

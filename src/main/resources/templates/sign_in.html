@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Sign In</title>
     <meta th:replace="fragments/master :: masterHead"></meta>
@@ -11,11 +11,13 @@
 <div th:replace="fragments/master :: liquids"></div>
 <div align="center" class="centredModalView">
     <h1>Login</h1>
-    <input id="email" placeholder="Email" type="text"><br>
-    <input id="password" placeholder="Password" type="password"><br>
-    <button id="signUp_button">Sign in</button>
-    <br>
-    <a href="/credential/signUp">Sign up</a>
+    <form method="get">
+        <input id="email" placeholder="Email" type="text">
+        <input id="password" placeholder="Password" type="password">
+        <button id="signUp_button">Sign in</button>
+        <br>
+        <a href="/credential/signUp">Sign up</a>
+    </form>
 </div>
 </body>
 <script th:replace="fragments/master :: liquid_animation"></script>

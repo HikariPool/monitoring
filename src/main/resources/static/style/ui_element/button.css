@@ -8,8 +8,7 @@ button {
 }
 
 button:active {
-    border-color: #4EB8E0;
-    border-width: 1px;
+    background-color: #4EB8E0;
 }
 
 button {
