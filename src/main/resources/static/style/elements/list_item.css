@@ -1,6 +1,6 @@
 .listItem {
     display: inline-block;
-    height: 200px;
+    height: 196px;
     width: 150px;
     margin: 5px 2px;
     background-color: #262636;
@@ -8,6 +8,7 @@
     opacity: 0.8;
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
+    overflow: hidden;
 }
 
 .listItem:active {
@@ -21,4 +22,14 @@
     width: 130px;
     top: 10px;
     border-radius: 20px;
+}
+
+.listItemTitle {
+    margin-top: 15px;
+    height: 40px;
+    max-height: 40px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    font-size: 18px;
 }

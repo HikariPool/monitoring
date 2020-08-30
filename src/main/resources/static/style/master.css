@@ -135,11 +135,6 @@ body {
     }
 }
 
-h1, h2, h3, h4, text, span {
-    color: #aaaea8;
-    margin: 5px 5px;
-}
-
 a {
     cursor: pointer;
     font-weight: bold;

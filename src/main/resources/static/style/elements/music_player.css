@@ -54,7 +54,7 @@
     top: 0px;
     left: 150px;
     height: 5px;
-    width: 0%;
+    width: 90%;
     background-color: #4EB8E0;
 }
 
@@ -80,10 +80,14 @@
     }
 
     #trackInfoWrapper {
-        left: 90px;
+        display: none;
     }
 
     #musicManager {
         right: 5px;
+    }
+
+    #trackTiming {
+        font-size: 12px;
     }
 }

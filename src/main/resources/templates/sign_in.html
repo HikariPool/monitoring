@@ -7,17 +7,15 @@
     <link rel="stylesheet" th:href="@{/style/page_style/sign_in_page.css}"/>
 </head>
 
-<body>
+<body ontouchstart="">
 <div th:replace="fragments/master :: liquids"></div>
 <div align="center" class="centredModalView">
     <h1>Login</h1>
-    <form method="get">
-        <input id="email" placeholder="Email" type="text">
-        <input id="password" placeholder="Password" type="password">
-        <button id="signUp_button">Sign in</button>
-        <br>
-        <a href="/credential/signUp">Sign up</a>
-    </form>
+    <input id="email" placeholder="Email" type="text">
+    <input id="password" placeholder="Password" type="password">
+    <button id="signUp_button">Sign in</button>
+    <br>
+    <a href="/credential/signUp">Sign up</a>
 </div>
 </body>
 <script th:replace="fragments/master :: liquid_animation"></script>
