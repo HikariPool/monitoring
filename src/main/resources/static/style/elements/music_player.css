@@ -50,11 +50,14 @@
 }
 
 #progressBar {
-    display: block;
     top: 0px;
     left: 150px;
     height: 5px;
-    width: 90%;
+    width: 85%;
+}
+
+#progressIndicator {
+    height: 5px;
     background-color: #4EB8E0;
 }
 
@@ -77,6 +80,7 @@
 
     #progressBar {
         left: 0px;
+        width: 100%;
     }
 
     #trackInfoWrapper {
