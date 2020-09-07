@@ -70,11 +70,16 @@
 @media (max-width: 760px) {
     #musicPlayerWrapper {
         left: 0px;
+        height: 60px;
         width: 100%;
         border-radius: 0px;
     }
 
     #trackIcon {
+        left: 10px;
+        height: 45px;
+        width: 45px;
+        top: 10px;
         left: 10px;
     }
 
@@ -89,9 +94,10 @@
 
     #musicManager {
         right: 5px;
+        top: 5px;
     }
 
     #trackTiming {
-        font-size: 12px;
+        display: none;
     }
 }
