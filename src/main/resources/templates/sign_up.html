@@ -3,7 +3,6 @@
 <head>
     <title>Sign Up</title>
     <div th:replace="fragments/master :: masterHead"></div>
-    <link rel="stylesheet" th:href="@{/style/elements/centred_modal_view.css}"/>
     <link rel="stylesheet" th:href="@{/style/page_style/sign_up_page.css}"/>
 </head>
 <body ontouchstart="">
@@ -19,7 +18,7 @@
            placeholder="Repeat password"
            type="text">
     <button id="signUp">Sign Up</button>
-    <a href="/credential/signIn">Sign In</a>
+    <a href="/auth/sign_in">Sign In</a>
 </div>
 </body>
 <script th:replace="fragments/master :: liquid_animation"></script>

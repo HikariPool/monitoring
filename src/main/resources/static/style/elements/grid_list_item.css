@@ -1,4 +1,4 @@
-.listItem {
+.gridListItem {
     display: inline-block;
     height: 196px;
     width: 150px;
@@ -11,11 +11,11 @@
     overflow: hidden;
 }
 
-.listItem:active {
+.gridListItem:active {
     background-color: #4EB8E0;
 }
 
-.listItemImage {
+.gridListItemImage {
     position: relative;
     display: inline-block;
     height: 130px;
@@ -24,7 +24,7 @@
     border-radius: 20px;
 }
 
-.listItemTitle {
+.gridListItemTitle {
     margin-top: 15px;
     height: 40px;
     max-height: 40px;

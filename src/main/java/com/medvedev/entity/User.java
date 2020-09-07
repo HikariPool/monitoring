@@ -7,23 +7,21 @@ package com.medvedev.entity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Collection;
 import java.util.UUID;
 
 @Entity
+@Table(name = "accounts")
 public class User implements UserDetails {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
     private String username;
     private String password;
 
     //// TODO: 7/23/2020 implement all methods
-    //// TODO: 8/1/2020 rename table becouse user in postgres is keyword
+    //// TODO: 9/4/2020 add constraints
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;

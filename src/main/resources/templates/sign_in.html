@@ -3,7 +3,6 @@
 <head>
     <title>Sign In</title>
     <meta th:replace="fragments/master :: masterHead"></meta>
-    <link rel="stylesheet" th:href="@{/style/elements/centred_modal_view.css}"/>
     <link rel="stylesheet" th:href="@{/style/page_style/sign_in_page.css}"/>
 </head>
 
@@ -15,7 +14,7 @@
     <input id="password" placeholder="Password" type="password">
     <button id="signUp_button">Sign in</button>
     <br>
-    <a href="/credential/signUp">Sign up</a>
+    <a href="/auth/sign_up">Sign up</a>
 </div>
 </body>
 <script th:replace="fragments/master :: liquid_animation"></script>
