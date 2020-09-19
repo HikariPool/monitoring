@@ -1,12 +1,20 @@
 @import "sign_in_page.css";
 
+
 .centredModalView {
-    height: 66%;
+    height: 395px;
 }
 
-@media (max-width: 760px) {
+@media (min-width: 340px) and (max-width: 600px) {
     .centredModalView {
-        height: 390px;
-        transform: translate(-50%, -50%);
+        height: 385px;
+        width: 280px;
+    }
+}
+
+@media (max-width: 340px) {
+    .centredModalView {
+        height: 365px;
+        width: 220px;
     }
 }

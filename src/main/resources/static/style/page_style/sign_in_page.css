@@ -13,3 +13,19 @@ button {
 input {
     margin: 10px 10px;
 }
+
+@media (min-width: 340px) and (max-width: 600px) {
+    .centredModalView {
+        height: 330px;
+        width: 280px;
+    }
+}
+
+@media (max-width: 340px) {
+    .centredModalView {
+        height: 295px;
+        width: 220px;
+    }
+}
+
+/*379px под регистрацию*/

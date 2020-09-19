@@ -13,4 +13,3 @@ public class Main {
         SpringApplication.run(Main.class, args);
     }
 }
-//// TODO: 8/1/2020 application icon
