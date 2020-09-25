@@ -14,7 +14,7 @@
 .workspaceHead {
     position: relative;
     height: 30%;
-    width: 70%;
+    width: 100%;
     left: 50%;
     margin-bottom: 10px;
     background: -webkit-linear-gradient(to right, #134e5e, #71b280);
@@ -27,7 +27,7 @@
 }
 
 #listItemContainer {
-    margin-bottom: 65px;
+    margin-bottom: 100px;
 }
 
 #title {
@@ -92,5 +92,9 @@
     #edit {
         right: 16px;
         bottom: 20px;
+    }
+
+    #listItemContainer {
+        margin-bottom: 65px;
     }
 }
