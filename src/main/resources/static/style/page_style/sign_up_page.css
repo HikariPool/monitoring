@@ -14,7 +14,8 @@
 
 @media (max-width: 340px) {
     .centredModalView {
-        height: 365px;
+        height: 390px;
         width: 220px;
+        transform: translate(-50%, -55%);
     }
 }
