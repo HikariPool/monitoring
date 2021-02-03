@@ -2,7 +2,7 @@
  * Copyright (c) 1.8.2020 Andrey Medvedev.
  */
 
-package com.medvedev.security;
+package com.medvedev.config.security;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

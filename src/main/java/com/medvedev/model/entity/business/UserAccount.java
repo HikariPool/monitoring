@@ -4,7 +4,6 @@
 
 package com.medvedev.model.entity.business;
 
-import com.medvedev.model.entity.util.JwtToken;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -32,10 +31,6 @@ public class UserAccount implements UserDetails {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "session_id"))
     private List<Session> sessions;
-
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private List<JwtToken> jwtTokens;
 
 
     //// TODO: 7/23/2020 implement all methods

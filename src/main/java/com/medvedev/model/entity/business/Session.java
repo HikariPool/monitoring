@@ -6,6 +6,7 @@ package com.medvedev.model.entity.business;
 
 import lombok.Data;
 import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "sessions")
+@EntityListeners(AuditingEntityListener.class)
 public class Session {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
