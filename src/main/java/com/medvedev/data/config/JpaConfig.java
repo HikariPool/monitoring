@@ -1,9 +1,10 @@
 /*
- * Copyright (c) 3.2.2021 Andrei Medvedev.
+ * Copyright (c) 9.2.2021 Andrei Medvedev.
  */
 
-package com.medvedev.config.data;
+package com.medvedev.data.config;
 
+import com.medvedev.data.audit.Auditor;
 import com.medvedev.model.entity.business.UserAccount;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
