@@ -1,20 +1,15 @@
 @import "sign_in_page.css";
+@import "../elements/validation_error_message.css";
 
-
-.centredModalView {
-    height: 395px;
-}
 
 @media (min-width: 340px) and (max-width: 600px) {
     .centredModalView {
-        height: 385px;
         width: 280px;
     }
 }
 
 @media (max-width: 340px) {
     .centredModalView {
-        height: 390px;
         width: 220px;
         transform: translate(-50%, -55%);
     }

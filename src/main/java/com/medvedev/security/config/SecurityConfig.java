@@ -18,7 +18,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-    private final int PASSWORD_ENCODER_STRENGTH = 20;
+    private final int PASSWORD_ENCODER_STRENGTH = 10;
     @Autowired
     private JwtFilter jwtFilter;
 
@@ -28,6 +28,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/auth/**", "/style/**", "/script/**", "/fonts/**", "/icon/**").permitAll()
                 .anyRequest().authenticated()
+                .and()
+                .formLogin()
+                .loginPage("/auth/sign_in")
                 .and()
                 .csrf().disable()
                 .addFilterAfter(jwtFilter, UsernamePasswordAuthenticationFilter.class);

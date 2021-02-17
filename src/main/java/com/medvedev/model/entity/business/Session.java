@@ -25,12 +25,12 @@ public class Session {
 
     @CreatedBy
     @ManyToOne
-    private UserAccount createdBy;
+    private User createdBy;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "session_id")
     private List<ContentItem> contentItems;
 
     @ManyToMany(mappedBy = "sessions")
-    private List<UserAccount> participants;
+    private List<User> participants;
 }

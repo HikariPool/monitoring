@@ -5,8 +5,6 @@
 package com.medvedev.security.jwt;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.GenericFilterBean;
 
@@ -25,14 +23,7 @@ public class JwtFilter extends GenericFilterBean {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain) throws IOException, ServletException {
-        String token = jwtProvider.getTokenFrom((HttpServletRequest) request);
-        if (token != null && jwtProvider.isValid(token)) {
-            Authentication auth = jwtProvider.getAuthentication(token);
-
-            if (auth != null) {
-                SecurityContextHolder.getContext().setAuthentication(auth);
-            }
-        }
+        jwtProvider.autoAuth((HttpServletRequest) request);
         filterChain.doFilter(request, response);
     }
 }

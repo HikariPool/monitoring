@@ -15,14 +15,15 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "accounts")
-public class UserAccount implements UserDetails {
+public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(unique = true, nullable = false)
+    @Column(unique = true, nullable = false, length = 30)
     private String username;
     @Column(unique = true, nullable = false)
     private String email;
+    @Column(nullable = false, length = 60)
     private String password;
 
     @ManyToMany
