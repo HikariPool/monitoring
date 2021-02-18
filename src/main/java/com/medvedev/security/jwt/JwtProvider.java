@@ -126,16 +126,4 @@ public class JwtProvider {
         }
         return false;
     }
-
-    public void removeToken() {
-        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder
-                .getRequestAttributes()).getRequest();
-        HttpServletResponse response = ((ServletRequestAttributes) RequestContextHolder
-                .getRequestAttributes()).getResponse();
-
-        Arrays.stream(request.getCookies()).forEach(cookie -> {
-            cookie.setMaxAge(0);
-            response.addCookie(cookie);
-        });
-    }
 }

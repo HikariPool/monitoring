@@ -15,5 +15,3 @@ function hideMenu(event) {
         document.removeEventListener('click', hideMenu);
     }
 }
-
-//todo logout
