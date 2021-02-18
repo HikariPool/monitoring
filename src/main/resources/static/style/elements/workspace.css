@@ -51,7 +51,7 @@
     width: 15px;
 }
 
-#add {
+#addButton {
     position: absolute;
     right: 60px;
     bottom: 35px;
@@ -82,7 +82,7 @@
         font-size: 30px;
     }
 
-    #add {
+    #addButton {
         right: 50px;
         bottom: 15px;
         height: 35px;

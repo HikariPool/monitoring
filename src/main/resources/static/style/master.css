@@ -39,3 +39,12 @@ svg {
 svg:active {
     fill: #52c4ef;
 }
+
+.confirm {
+    background-color: #4EB8E0;
+    opacity: 0.8;
+}
+
+.control {
+    color: #5c5c5c;
+}
