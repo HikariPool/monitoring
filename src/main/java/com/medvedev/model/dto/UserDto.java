@@ -22,4 +22,5 @@ public class UserDto {
     public static User convertToEntity(UserDto userDto) {
         return new ModelMapper().map(userDto, User.class);
     }
+
 }
