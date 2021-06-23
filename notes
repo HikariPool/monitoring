@@ -1,0 +1,17 @@
+TECHNICAL DUTY
+
+1. Cut all svg into fragments and insert using thymleaf
+2. Refactor th:block in fragments
+3. Cut position css attributes at file and create separate file of theme
+4. Add logging
+5. Rewrite getting DOM object using jQuery
+6. Create text cutting of error-message
+7. Make redirect on prev page after log in
+8. Create generic mechanism for sending and showing on client side error messages (Error messages should placed at xml). Delete catch block in controllers
+9. Input.css contains sizes that belong to central_modal_view
+10. Create generic menu when all necessary scripts will be load only when needed
+11. Paging of lists
+12. Optimize for Firefox and Edge (scroll is creepy)
+13. Create generic entities
+14. Create mechanism of multi language based on XML with cache
+15. Generic CRUD of entities
