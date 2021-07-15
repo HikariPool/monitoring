@@ -43,7 +43,10 @@ function createSession() {
         processData: false,
         data: formData,
         type: 'POST',
-        success: () => closePopup(),
+        success: () => {
+            closePopup();
+            reloadSessions();
+        },
         error: xhr => showError(JSON.parse(xhr.responseText).message)
     });
     reloadSessions();

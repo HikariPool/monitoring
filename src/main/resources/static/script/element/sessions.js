@@ -12,7 +12,7 @@ function reloadSessions() {
     });
 }
 
-function showSessions(sessions) {//need to get norm json values
+function showSessions(sessions) {
     for (let i = 0; i < sessions.length; i++) {
         let div = document.createElement('div');
         div.className = 'gridListItem';
