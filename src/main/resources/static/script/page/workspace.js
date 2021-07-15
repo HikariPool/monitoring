@@ -46,6 +46,7 @@ function createSession() {
         success: () => closePopup(),
         error: xhr => showError(JSON.parse(xhr.responseText).message)
     });
+    reloadSessions();
 }
 
 function closePopup() {

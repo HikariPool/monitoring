@@ -5,15 +5,16 @@
 package com.medvedev.controller.rest;
 
 import com.medvedev.model.dto.SessionDTO;
+import com.medvedev.model.entity.business.User;
 import com.medvedev.service.SessionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/session")
@@ -30,5 +31,12 @@ public class SessionController {
             return;
         }
         throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Title is empty!");
+    }
+
+    @GetMapping("/all")
+    public List<SessionDTO> getAll() {
+        User currentUser = (User) SecurityContextHolder.getContext()
+                .getAuthentication().getPrincipal();
+        return sessionService.getByUser(currentUser);
     }
 }

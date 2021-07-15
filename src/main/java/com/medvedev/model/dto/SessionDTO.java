@@ -12,7 +12,7 @@ import org.modelmapper.ModelMapper;
 public class SessionDTO {
     private Long id;
     private String title;
-    private String path;
+    private String imagePath;
 
 
     public static SessionDTO convertToDto(Session session) {

@@ -15,3 +15,5 @@ TECHNICAL DUTY
 13. Create generic entities
 14. Create mechanism of multi language based on XML with cache
 15. Generic CRUD of entities
+16. Getting HTML of list element from server and setting ids into them
+17. Create constants with paths for resources
