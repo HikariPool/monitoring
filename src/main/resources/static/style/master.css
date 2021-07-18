@@ -12,6 +12,8 @@ body {
     overflow: hidden hidden;
     font-family: Roboto, serif;
     font-weight: bold;
+    margin: 0px;
+    overflow: scroll;
 }
 
 a {
@@ -47,4 +49,13 @@ svg:active {
 
 .control {
     color: #5c5c5c;
+}
+
+iframe {
+    border-width: 0px;
+    padding: 0px;
+}
+
+html {
+    overflow: scroll;
 }

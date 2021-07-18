@@ -4,7 +4,7 @@
     position: absolute;
     left: 50%;
     top: 50%;
-    transform: translate(-52%, -60%);
+    transform: translate(-50%, -60%);
     z-index: 100000;
     border-radius: 20px;
     background-color: #1e1e30;

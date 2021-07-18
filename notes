@@ -17,3 +17,25 @@ TECHNICAL DUTY
 15. Generic CRUD of entities
 16. Getting HTML of list element from server and setting ids into them
 17. Create constants with paths for resources
+
+
+
+
+{
+
+list item
+
+
+<div class="lineListItem">
+        <img class="lineListItemImage"
+             src="https://www.1c-interes.ru/images/2016/10/22784816_Metallica_Kill_Em_All_b.jpg">
+        <h3 class="lineListItemTitle">Feed em all</h3>
+        <svg class="linListItemEdit" height="15pt" viewBox="0 0 515.555 515.555" width="15pt"
+             xmlns="http://www.w3.org/2000/svg">
+            <path d="m303.347 18.875c25.167 25.167 25.167 65.971 0 91.138s-65.971 25.167-91.138 0-25.167-65.971 0-91.138c25.166-25.167 65.97-25.167 91.138 0"/>
+            <path d="m303.347 212.209c25.167 25.167 25.167 65.971 0 91.138s-65.971 25.167-91.138 0-25.167-65.971 0-91.138c25.166-25.167 65.97-25.167 91.138 0"/>
+            <path d="m303.347 405.541c25.167 25.167 25.167 65.971 0 91.138s-65.971 25.167-91.138 0-25.167-65.971 0-91.138c25.166-25.167 65.97-25.167 91.138 0"/>
+        </svg>
+    </div>
+
+}
