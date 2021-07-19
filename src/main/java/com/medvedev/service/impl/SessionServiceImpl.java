@@ -7,6 +7,7 @@ package com.medvedev.service.impl;
 import com.medvedev.model.dto.SessionDTO;
 import com.medvedev.model.entity.business.Session;
 import com.medvedev.model.entity.business.User;
+import com.medvedev.model.entity.util.DtoConverter;
 import com.medvedev.repository.SessionRepo;
 import com.medvedev.service.FileService;
 import com.medvedev.service.SessionService;
@@ -72,11 +73,7 @@ public class SessionServiceImpl implements SessionService {
 
     @Override
     public List<SessionDTO> getByUser(User user) {
-        List<SessionDTO> dtos = new ArrayList<>();
-        for (Session session : sessionRepo.getByUser(user.getId())) {
-            dtos.add(SessionDTO.convertToDto(session));
-        }
-        return dtos;
+        return DtoConverter.convert(sessionRepo.getByUser(user.getId()), SessionDTO.class);
     }
 
     private String getMemType(String fileTitle) {

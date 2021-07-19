@@ -18,8 +18,6 @@ public class ContentItem {
     private String title;
     @Column(name = "item_order")
     private Long order;
-    @Column(nullable = false)
-    private String contentTitle;
-    private String contentPreview;
+    private String previewPath;
+    private String sourcePath;
 }
-//// TODO: 2/2/2021 add lists
