@@ -17,6 +17,7 @@ TECHNICAL DUTY
 15. Generic CRUD of entities
 16. Getting HTML of list element from server and setting ids into them
 17. Create constants with paths for resources
+18. Create mechanism that will be create list element and css style will be changeable. For example line list item and grid list item
 
 
 

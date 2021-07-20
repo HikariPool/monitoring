@@ -4,6 +4,7 @@
 
 package com.medvedev.model.entity.business;
 
+import com.medvedev.data.constants.Constants;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -20,4 +21,10 @@ public class ContentItem {
     private Long order;
     private String previewPath;
     private String sourcePath;
+
+
+    @PostLoad
+    private void postLoad() {
+        previewPath = Constants.UPLOAD_URL + previewPath;
+    }
 }

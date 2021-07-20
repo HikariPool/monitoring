@@ -5,10 +5,10 @@ let itemContainer = document.getElementById('listItemContainer');
 
 
 $('#upload').click(openFileChooser);
-$('#createButton').click(createSession);
+$('#createButton').click(addContentItem);
 
 
-reloadSessions();
+reloadContent();
 
 
 let file;
@@ -26,21 +26,21 @@ function openFileChooser() {
     input.click();
 }
 
-function createSession() {
+function addContentItem() {
     let formData = new FormData;
 
     formData.append('img', file);
     formData.append('title', titleField.val());
 
     $.ajax({
-        url: '/session/create',
+        url: '/content/create',
         contentType: false,
         processData: false,
         data: formData,
         type: 'POST',
         success: () => {
             closePopup();
-            reloadSessions();
+            reloadContent();
         },
         error: xhr => showError(JSON.parse(xhr.responseText).message)
     });
@@ -54,39 +54,42 @@ function closePopup() {
 }
 
 
-function reloadSessions() {
+function reloadContent() {
     itemContainer.innerHTML = '';
 
     $.ajax({
-        url: '/session/all',
+        url: '/session/content?session_id=' + getParam('session_id'),
         type: 'GET',
-        success: data => showSessions(data)
+        success: data => showContentItems(data)
     });
 }
 
-function showSessions(sessions) {
-    for (let i = 0; i < sessions.length; i++) {
+function getParam(title) {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    return urlParams.get(title);
+}
+
+function showContentItems(contentItems) {
+    for (let i = 0; i < contentItems.length; i++) {
         let div = document.createElement('div');
-        div.className = 'gridListItem';
-        div.id = sessions[i].id;
+        div.className = 'lineListItem';
+        div.id = contentItems[i].id;
 
 
         let img = document.createElement('img');
-        img.className = 'gridListItemImage';
-        img.src = sessions[i].imagePath;
+        img.className = 'lineListItemImage';
+        img.src = contentItems[i].previewPath;
 
         let h3 = document.createElement('h3');
-        h3.className = 'gridListItemTitle';
-        h3.textContent = sessions[i].title;
+        h3.className = 'lineListItemTitle';
+        h3.textContent = contentItems[i].title;
 
         div.appendChild(img);
         div.appendChild(h3);
         itemContainer.appendChild(div);
 
-        div.onclick = () => openSession(div.id);
+        //todo add play listener
+        // div.onclick = () => openSession(div.id);
     }
-}
-
-function openSession(sessionId) {
-    window.parent.postMessage('/frame/content_frame?session_id=' + sessionId);
 }

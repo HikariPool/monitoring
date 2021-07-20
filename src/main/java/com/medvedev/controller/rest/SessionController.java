@@ -44,8 +44,20 @@ public class SessionController {
         return sessionService.getByUser(currentUser);
     }
 
-    @GetMapping("/content/{session_id}")
-    public List<ContentItemDto> getContentBy(@PathVariable("session_id") Long sessionId) {
-        return contentItemService.getContentItemsBy(sessionId);
+    @GetMapping("/content")
+    public List<ContentItemDto> getContentBy(@RequestParam("session_id") Long sessionId) {
+        return contentItemService.getContentItemsBy(sessionId);//// TODO: 7/20/2021 переделать так чтобы возвращал Session со всеми контент итемами 
+    }
+
+    @PostMapping("/content/create")
+    public void addContentItem(@RequestParam(value = "img", required = false) MultipartFile image, ContentItemDto contentItemDto) {
+//        String title = contentItemDto.getTitle();
+//        if (title != null && !title.isEmpty()) {
+//            sessionService.create(SessionDTO.convertToEntity(contentItemDto), image);
+//            return;
+//        }
+//        throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Title is empty!");
+
+        //// TODO: 7/20/2021 addingContentItem
     }
 }
