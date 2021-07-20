@@ -13,5 +13,6 @@ function logout() {
 }
 
 function navigateIframe(path) {
+    iframe.style = 'visibility: hidden';
     iframe.src = path;
 }
