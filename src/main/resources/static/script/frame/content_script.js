@@ -1,6 +1,6 @@
 let popup = document.getElementById('popup');
 let addButton = document.getElementById('addButton');
-let titleField = $('#titleField');
+let titleField = $('#title');
 let itemContainer = document.getElementById('listItemContainer');
 
 
@@ -58,7 +58,7 @@ function reloadContent() {
     itemContainer.innerHTML = '';
 
     $.ajax({
-        url: '/session/content?session_id=' + getParam('session_id'),
+        url: '/session/get?session_id=' + getParam('session_id'),
         type: 'GET',
         success: data => showContentItems(data)
     });
@@ -70,7 +70,10 @@ function getParam(title) {
     return urlParams.get(title);
 }
 
-function showContentItems(contentItems) {
+function showContentItems(session) {
+    titleField.html(session.title);
+
+    let contentItems = session.contentItems;
     for (let i = 0; i < contentItems.length; i++) {
         let div = document.createElement('div');
         div.className = 'lineListItem';

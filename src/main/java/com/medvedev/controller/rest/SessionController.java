@@ -7,7 +7,6 @@ package com.medvedev.controller.rest;
 import com.medvedev.model.dto.ContentItemDto;
 import com.medvedev.model.dto.SessionDTO;
 import com.medvedev.model.entity.business.User;
-import com.medvedev.service.ContentItemService;
 import com.medvedev.service.SessionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,8 +22,6 @@ import java.util.List;
 public class SessionController {
     @Autowired
     private SessionService sessionService;
-    @Autowired
-    private ContentItemService contentItemService;
 
 
     @PostMapping("/create")
@@ -44,9 +41,9 @@ public class SessionController {
         return sessionService.getByUser(currentUser);
     }
 
-    @GetMapping("/content")
-    public List<ContentItemDto> getContentBy(@RequestParam("session_id") Long sessionId) {
-        return contentItemService.getContentItemsBy(sessionId);//// TODO: 7/20/2021 переделать так чтобы возвращал Session со всеми контент итемами 
+    @GetMapping("/get")
+    public SessionDTO getSessionBy(@RequestParam("session_id") Long sessionId) {
+        return sessionService.getBy(sessionId);
     }
 
     @PostMapping("/content/create")

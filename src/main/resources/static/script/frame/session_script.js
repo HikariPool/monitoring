@@ -1,6 +1,6 @@
 let popup = document.getElementById('popup');
 let addButton = document.getElementById('addButton');
-let titleField = $('#titleField');
+let titleField = $('#title');
 let itemContainer = document.getElementById('listItemContainer');
 
 

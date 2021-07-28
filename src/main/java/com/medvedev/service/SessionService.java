@@ -17,4 +17,6 @@ public interface SessionService {
     void create(Session session, MultipartFile image);
 
     List<SessionDTO> getByUser(User user);
+
+    SessionDTO getBy(Long sessionId);
 }

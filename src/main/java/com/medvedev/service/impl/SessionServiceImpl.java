@@ -9,6 +9,7 @@ import com.medvedev.model.entity.business.Session;
 import com.medvedev.model.entity.business.User;
 import com.medvedev.model.entity.util.DtoConverter;
 import com.medvedev.repository.SessionRepo;
+import com.medvedev.service.ContentItemService;
 import com.medvedev.service.FileService;
 import com.medvedev.service.SessionService;
 import lombok.SneakyThrows;
@@ -27,6 +28,8 @@ import java.util.List;
 public class SessionServiceImpl implements SessionService {
     @Autowired
     private FileService fileService;
+    @Autowired
+    private ContentItemService contentItemService;
     @Autowired
     private SessionRepo sessionRepo;
     @Autowired
@@ -74,6 +77,13 @@ public class SessionServiceImpl implements SessionService {
     @Override
     public List<SessionDTO> getByUser(User user) {
         return DtoConverter.convert(sessionRepo.getByUser(user.getId()), SessionDTO.class);
+    }
+
+    @Override
+    public SessionDTO getBy(Long sessionId) {
+        SessionDTO sessionDTO = SessionDTO.convertToDto(sessionRepo.findById(sessionId).get());
+        sessionDTO.setContentItems(contentItemService.getContentItemsBy(sessionId));
+        return sessionDTO;
     }
 
     private String getMemType(String fileTitle) {
