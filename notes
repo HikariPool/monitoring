@@ -15,9 +15,10 @@ TECHNICAL DUTY
 13. Create generic entities
 14. Create mechanism of multi language based on XML with cache
 15. Generic CRUD of entities
-16. Getting HTML of list element from server and setting ids into them
+16. Getting HTML of list element from server via thymleaf and setting listeners
 17. Create constants with paths for resources
 18. Create mechanism that will be create list element and css style will be changeable. For example line list item and grid list item
 19. Sign in and sign up make through iframes
 20. URL navigation to session
 21. JS code in OOP style
+22. Fix hiding of menu by click on iframe. Not only workspace
