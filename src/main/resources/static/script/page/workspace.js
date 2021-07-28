@@ -1,6 +1,5 @@
 $('#logOutItem').click(logout);
 let iframe = document.getElementById('workspace');
-
 window.addEventListener('message', (path) => navigateIframe(path.data));
 
 

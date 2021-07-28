@@ -77,7 +77,7 @@ function showContentItems(session) {
     for (let i = 0; i < contentItems.length; i++) {
         let div = document.createElement('div');
         div.className = 'lineListItem';
-        div.id = contentItems[i].id;
+        div.id = contentItems[i].sourcePath;
 
 
         let img = document.createElement('img');
@@ -92,7 +92,10 @@ function showContentItems(session) {
         div.appendChild(h3);
         itemContainer.appendChild(div);
 
-        //todo add play listener
-        // div.onclick = () => openSession(div.id);
+        div.onclick = () => window.parent.playAudio(contentItems[i].sourcePath, () => {
+            if (contentItems[i + 1] !== undefined) {
+                window.parent.playAudio(contentItems[i + 1].sourcePath);
+            }
+        });
     }
 }
