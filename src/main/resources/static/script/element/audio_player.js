@@ -5,14 +5,16 @@ let progressBar = document.getElementById('progressIndicator');
 
 let audio = new Audio();
 
-function playAudio(id, onEnd) {
-    audio.src = '/stream/get/' + id;
+function playAudio(path, onEnd, onUpdate) {
+    audio.src = path;
     audio.play();
     //todo change play icon
     //todo change preview playing track
     audio.ontimeupdate = event => {
         updateProgressBar(event.target);
-        sync(event.target);
+        if (onUpdate !== undefined) {
+            onUpdate(event.target);
+        }
     };
     audio.onended = event => {
         //todo change play icon
@@ -25,8 +27,4 @@ function playAudio(id, onEnd) {
 function updateProgressBar(audio) {
     let percent = audio.currentTime * 100 / audio.duration;
     progressBar.style = 'width: ' + percent + '%';
-}
-
-function sync(audio) {
-    //todo  sync client side
 }

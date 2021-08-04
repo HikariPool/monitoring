@@ -92,10 +92,27 @@ function showContentItems(session) {
         div.appendChild(h3);
         itemContainer.appendChild(div);
 
-        div.onclick = () => window.parent.playAudio(contentItems[i].sourcePath, () => {
-            if (contentItems[i + 1] !== undefined) {
-                window.parent.playAudio(contentItems[i + 1].sourcePath);
-            }
-        });
+        div.onclick = () =>
+            window.parent.playAudio(
+                '/stream/get/' + contentItems[i].sourcePath, undefined, audio => sync(audio, session.id));
     }
+}
+
+function playNextItem() {
+
+}
+
+
+function sync(audio, sessionId) {
+    $.ajax({
+        url: '/stream/sync/' + sessionId + '/' + audio.currentTime,
+        type: 'POST',
+        success: syncResult => {
+            console.log(syncResult.needPlay);
+            if (!syncResult.needPlay) {
+                audio.pause();
+                //todo  interval for playing
+            }
+        }
+    });
 }
