@@ -2,7 +2,7 @@
  * Copyright (c) 9.2.2021 Andrei Medvedev.
  */
 
-package com.medvedev.security.jwt;
+package com.medvedev.config.security.jwt;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

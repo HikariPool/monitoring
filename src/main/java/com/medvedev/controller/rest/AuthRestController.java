@@ -4,9 +4,9 @@
 
 package com.medvedev.controller.rest;
 
+import com.medvedev.config.security.jwt.JwtProvider;
 import com.medvedev.model.dto.UserDto;
 import com.medvedev.model.entity.business.User;
-import com.medvedev.security.jwt.JwtProvider;
 import com.medvedev.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;

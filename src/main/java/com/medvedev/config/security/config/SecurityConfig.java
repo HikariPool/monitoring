@@ -2,9 +2,9 @@
  * Copyright (c) 9.2.2021 Andrei Medvedev.
  */
 
-package com.medvedev.security.config;
+package com.medvedev.config.security.config;
 
-import com.medvedev.security.jwt.JwtFilter;
+import com.medvedev.config.security.jwt.JwtFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

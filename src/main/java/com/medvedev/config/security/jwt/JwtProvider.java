@@ -2,7 +2,7 @@
  * Copyright (c) 9.2.2021 Andrei Medvedev.
  */
 
-package com.medvedev.security.jwt;
+package com.medvedev.config.security.jwt;
 
 import com.medvedev.model.entity.business.User;
 import io.jsonwebtoken.*;

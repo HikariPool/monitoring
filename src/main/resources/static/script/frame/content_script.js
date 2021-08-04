@@ -102,6 +102,8 @@ function playNextItem() {
 
 }
 
+let playListenerInterval;
+
 
 function sync(audio, sessionId) {
     $.ajax({
@@ -111,7 +113,10 @@ function sync(audio, sessionId) {
             console.log(syncResult.needPlay);
             if (!syncResult.needPlay) {
                 audio.pause();
-                //todo  interval for playing
+                playListenerInterval = setInterval(() => sync(audio, sessionId), 1000);
+            } else {
+                clearInterval(playListenerInterval);
+                audio.play();
             }
         }
     });
