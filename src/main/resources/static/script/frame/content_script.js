@@ -94,7 +94,7 @@ function showContentItems(session) {
 
         div.onclick = () =>
             window.parent.playAudio(
-                '/stream/get/' + contentItems[i].sourcePath, undefined, audio => window.top.sync(audio, session.id));
+                '/stream/get/' + contentItems[i].sourcePath, undefined, audio => window.top.sync(audio, session.id), contentItems[i].previewPath);
     }
 }
 

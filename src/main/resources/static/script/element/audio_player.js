@@ -2,10 +2,14 @@ let playButton = document.getElementById('playTrack');
 let nextButton = document.getElementById('nextTrack');
 let prevButton = document.getElementById('prevTrack');
 let progressBar = document.getElementById('progressIndicator');
+let trackIcon = document.getElementById('trackIcon');
 
 let audio = new Audio();
 
-function playAudio(path, onEnd, onUpdate) {
+function playAudio(path, onEnd, onUpdate, imagePath) {
+    if (imagePath !== null) {
+        trackIcon.src = imagePath;
+    }
     if (path !== null) {
         audio.src = path;
     }
@@ -30,7 +34,7 @@ function playAudio(path, onEnd, onUpdate) {
 function stopAudio(audio, onEnd, onUpdate) {
     audio.ontimeupdate = null;
     audio.pause();
-    playButton.onclick = () => playAudio(null, onEnd, onUpdate);
+    playButton.onclick = () => playAudio(null, onEnd, onUpdate, null);
 }
 
 function updateProgressBar(audio) {
