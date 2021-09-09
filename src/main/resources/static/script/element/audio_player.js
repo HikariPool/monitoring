@@ -6,7 +6,9 @@ let progressBar = document.getElementById('progressIndicator');
 let audio = new Audio();
 
 function playAudio(path, onEnd, onUpdate) {
-    audio.src = path;
+    if (path !== null) {
+        audio.src = path;
+    }
     audio.play();
     //todo change play icon
     //todo change preview playing track
@@ -16,12 +18,19 @@ function playAudio(path, onEnd, onUpdate) {
             onUpdate(event.target);
         }
     };
-    audio.onended = event => {
+    audio.onended = () => {
         //todo change play icon
         if (onEnd !== undefined) {
             onEnd();
         }
     };
+    playButton.onclick = () => stopAudio(audio, onEnd, onUpdate);
+}
+
+function stopAudio(audio, onEnd, onUpdate) {
+    audio.ontimeupdate = null;
+    audio.pause();
+    playButton.onclick = () => playAudio(null, onEnd, onUpdate);
 }
 
 function updateProgressBar(audio) {

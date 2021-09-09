@@ -94,30 +94,10 @@ function showContentItems(session) {
 
         div.onclick = () =>
             window.parent.playAudio(
-                '/stream/get/' + contentItems[i].sourcePath, undefined, audio => sync(audio, session.id));
+                '/stream/get/' + contentItems[i].sourcePath, undefined, audio => window.top.sync(audio, session.id));
     }
 }
 
 function playNextItem() {
 
-}
-
-let playListenerInterval;
-
-
-function sync(audio, sessionId) {
-    $.ajax({
-        url: '/stream/sync/' + sessionId + '/' + audio.currentTime,
-        type: 'POST',
-        success: syncResult => {
-            console.log(syncResult.needPlay);
-            if (!syncResult.needPlay) {
-                audio.pause();
-                playListenerInterval = setInterval(() => sync(audio, sessionId), 1000);
-            } else {
-                clearInterval(playListenerInterval);
-                audio.play();
-            }
-        }
-    });
 }
