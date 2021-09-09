@@ -33,7 +33,7 @@ function addContentItem() {
     formData.append('title', titleField.val());
 
     $.ajax({
-        url: '/content/create',
+        url: '/session/content/create',
         contentType: false,
         processData: false,
         data: formData,
