@@ -25,14 +25,14 @@ public class Session {
     private String imagePath;
 
     @CreatedBy
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.DETACH)
     private User createdBy;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "session_id")
     private List<ContentItem> contentItems;
 
-    @ManyToMany(mappedBy = "sessions")
+    @ManyToMany(mappedBy = "sessions", cascade = CascadeType.DETACH)
     private List<User> participants;
 
 

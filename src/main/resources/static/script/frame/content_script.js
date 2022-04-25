@@ -1,6 +1,7 @@
 let popup = document.getElementById('popup');
 let addButton = document.getElementById('addButton');
 let titleField = $('#titleField');
+let title = $('#title');
 let itemContainer = document.getElementById('listItemContainer');
 let editButton = document.getElementById('editButton');
 let editMenu = document.getElementById('editMenu');
@@ -73,13 +74,14 @@ function getParam(title) {
 }
 
 function showContentItems(session) {
-    titleField.html(session.title);
+    title.html(session.title);
 
     let contentItems = session.contentItems;
     for (let i = 0; i < contentItems.length; i++) {
         let div = document.createElement('div');
-        div.className = 'lineListItem';
-        div.id = contentItems[i].sourcePath;
+        div.className = 'lineListItem parentElement';
+        div.id = contentItems[i].id;
+        div.setAttribute('type', 'contentItem');
 
 
         let img = document.createElement('img');
@@ -99,11 +101,6 @@ function showContentItems(session) {
                 '/stream/get/' + contentItems[i].sourcePath, undefined, audio => window.top.sync(audio, session.id), contentItems[i].previewPath);
     }
 }
-
-function playNextItem() {
-
-}
-
 
 editButton.addEventListener('click', () => {
     showOnClick(editMenu);

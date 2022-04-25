@@ -10,7 +10,7 @@ $('#upload').click(openFileChooser);
 $('#createButton').click(createSession);
 
 
-reloadSessions();
+reloadContent();
 
 
 let file;
@@ -42,7 +42,7 @@ function createSession() {
         type: 'POST',
         success: () => {
             closePopup();
-            reloadSessions();
+            reloadContent();
         },
         error: xhr => showError(JSON.parse(xhr.responseText).message)
     });
@@ -56,7 +56,7 @@ function closePopup() {
 }
 
 
-function reloadSessions() {
+function reloadContent() {
     itemContainer.innerHTML = '';
 
     $.ajax({
@@ -69,8 +69,9 @@ function reloadSessions() {
 function showSessions(sessions) {
     for (let i = 0; i < sessions.length; i++) {
         let div = document.createElement('div');
-        div.className = 'gridListItem';
+        div.className = 'gridListItem parentElement';
         div.id = sessions[i].id;
+        div.setAttribute('type', 'session');
 
 
         let img = document.createElement('img');

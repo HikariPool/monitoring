@@ -67,6 +67,10 @@
     font-size: 15px;
 }
 
+#nextTrack, #prevTrack {
+    display: none;
+}
+
 @media (max-width: 760px) {
     #musicPlayerWrapper {
         left: 0px;
