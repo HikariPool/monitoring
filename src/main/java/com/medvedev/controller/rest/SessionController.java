@@ -4,7 +4,6 @@
 
 package com.medvedev.controller.rest;
 
-import com.medvedev.model.dto.ContentItemDto;
 import com.medvedev.model.dto.SessionDTO;
 import com.medvedev.model.entity.business.User;
 import com.medvedev.service.SessionService;
@@ -43,18 +42,6 @@ public class SessionController {
 
     @GetMapping("/get")
     public SessionDTO getSessionBy(@RequestParam("session_id") Long sessionId) {
-        return sessionService.getBy(sessionId);
-    }
-
-    @PostMapping("/content/create")
-    public void addContentItem(@RequestParam(value = "img", required = false) MultipartFile image, ContentItemDto contentItemDto) {
-//        String title = contentItemDto.getTitle();
-//        if (title != null && !title.isEmpty()) {
-//            sessionService.create(SessionDTO.convertToEntity(contentItemDto), image);
-//            return;
-//        }
-//        throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Title is empty!");
-
-        //// TODO: 7/20/2021 addingContentItem
+        return SessionDTO.convertToDto(sessionService.getBy(sessionId));
     }
 }

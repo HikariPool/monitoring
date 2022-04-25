@@ -28,7 +28,7 @@ public class Session {
     @ManyToOne
     private User createdBy;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "session_id")
     private List<ContentItem> contentItems;
 

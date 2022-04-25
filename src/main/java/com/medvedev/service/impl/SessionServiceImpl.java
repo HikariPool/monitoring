@@ -80,13 +80,15 @@ public class SessionServiceImpl implements SessionService {
     }
 
     @Override
-    public SessionDTO getBy(Long sessionId) {
-        SessionDTO sessionDTO = SessionDTO.convertToDto(sessionRepo.findById(sessionId).get());
-        sessionDTO.setContentItems(contentItemService.getContentItemsBy(sessionId));
-        return sessionDTO;
+    public Session getBy(Long sessionId) {
+        return sessionRepo.findById(sessionId).get();
     }
 
     private String getMemType(String fileTitle) {
         return fileTitle.substring(fileTitle.lastIndexOf("."));
+    }
+
+    public void update(Session session) {
+
     }
 }

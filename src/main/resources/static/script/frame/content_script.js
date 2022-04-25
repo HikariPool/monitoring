@@ -1,6 +1,6 @@
 let popup = document.getElementById('popup');
 let addButton = document.getElementById('addButton');
-let titleField = $('#title');
+let titleField = $('#titleField');
 let itemContainer = document.getElementById('listItemContainer');
 
 
@@ -33,7 +33,7 @@ function addContentItem() {
     formData.append('title', titleField.val());
 
     $.ajax({
-        url: '/session/content/create',
+        url: '/session/content/create?session_id=' + getParam('session_id'),
         contentType: false,
         processData: false,
         data: formData,

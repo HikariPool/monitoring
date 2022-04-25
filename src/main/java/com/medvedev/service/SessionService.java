@@ -18,5 +18,5 @@ public interface SessionService {
 
     List<SessionDTO> getByUser(User user);
 
-    SessionDTO getBy(Long sessionId);
+    Session getBy(Long sessionId);
 }
