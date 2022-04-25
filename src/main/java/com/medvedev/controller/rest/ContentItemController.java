@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.io.IOException;
+
 @RestController
 @RequestMapping("/session")
 public class ContentItemController {
@@ -24,14 +26,12 @@ public class ContentItemController {
 
 
     @PostMapping("/content/create")
-    public void addContentItem(@RequestParam("session_id") Long sessionId, @RequestParam(value = "img", required = false) MultipartFile image, ContentItemDto contentItemDto) {
+    public void addContentItem(@RequestParam("session_id") Long sessionId, @RequestParam(value = "img", required = false) MultipartFile image, ContentItemDto contentItemDto) throws IOException {
         String title = contentItemDto.getTitle();
         if (title != null && !title.isEmpty()) {
             contentItemService.create(sessionId, image, ContentItemDto.convertToEntity(contentItemDto));
             return;
         }
         throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Title is empty!");
-
-        // TODO: 7/20/2021 addingContentItem
     }
 }

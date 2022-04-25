@@ -1,5 +1,7 @@
 let popup = document.getElementById('popup');
 let addButton = document.getElementById('addButton');
+let editButton = document.getElementById('editButton');
+let editMenu = document.getElementById('editMenu');
 let titleField = $('#titleField');
 let itemContainer = document.getElementById('listItemContainer');
 
@@ -90,3 +92,7 @@ function showSessions(sessions) {
 function openSession(sessionId) {
     window.parent.postMessage('/frame/content_frame?session_id=' + sessionId);
 }
+
+editButton.addEventListener('click', () => {
+    showOnClick(editMenu);
+});
