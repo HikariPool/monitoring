@@ -59,7 +59,6 @@ public class SessionServiceImpl implements SessionService {
         users.add(user);
         session.setParticipants(users);
 
-
         sessionRepo.save(session);
 
         EntityManager entityManager = entityManagerFactory.createEntityManager();

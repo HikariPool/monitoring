@@ -28,16 +28,22 @@ public class Session {
     @ManyToOne(cascade = CascadeType.DETACH)
     private User createdBy;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     @JoinColumn(name = "session_id")
     private List<ContentItem> contentItems;
 
-    @ManyToMany(mappedBy = "sessions", cascade = CascadeType.DETACH)
+    @ManyToMany(cascade = CascadeType.REMOVE, mappedBy = "sessions")
     private List<User> participants;
 
 
     @PostLoad
     private void postLoad() {
         this.imagePath = Constants.UPLOAD_URL + imagePath;
+    }
+
+    @PrePersist
+    @PreUpdate
+    private void prePersist() {
+        this.imagePath = imagePath != null ? imagePath.replace(Constants.UPLOAD_URL, "") : null;
     }
 }
