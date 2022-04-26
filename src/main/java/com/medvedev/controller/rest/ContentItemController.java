@@ -26,10 +26,13 @@ public class ContentItemController {
 
 
     @PostMapping("/content/create")
-    public void addContentItem(@RequestParam("session_id") Long sessionId, @RequestParam(value = "img", required = false) MultipartFile image, ContentItemDto contentItemDto) throws IOException {
+    public void addContentItem(@RequestParam("session_id") Long sessionId,
+                               @RequestParam(value = "img", required = false) MultipartFile image,
+                               @RequestParam(value = "media", required = false) MultipartFile media,
+                               ContentItemDto contentItemDto) throws IOException {
         String title = contentItemDto.getTitle();
         if (title != null && !title.isEmpty()) {
-            contentItemService.create(sessionId, image, ContentItemDto.convertToEntity(contentItemDto));
+            contentItemService.create(sessionId, image, media, ContentItemDto.convertToEntity(contentItemDto));
             return;
         }
         throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Title is empty!");

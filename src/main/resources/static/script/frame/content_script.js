@@ -14,7 +14,7 @@ $('#createButton').click(addContentItem);
 reloadContent();
 
 
-let file;
+let files;
 
 
 addButton.addEventListener('click', () => {
@@ -23,16 +23,30 @@ addButton.addEventListener('click', () => {
 
 function openFileChooser() {
     var input = document.createElement('input');
+    input.setAttribute('multiple', 'true');
     input.type = 'file';
 
-    input.onchange = e => file = e.target.files[0];
+    input.onchange = e => files = e.target.files;
     input.click();
 }
 
 function addContentItem() {
     let formData = new FormData;
+    let img;
+    let media;
 
-    formData.append('img', file);
+    if (files !== undefined && files[0] != undefined && files[0] !== undefined &&
+        (files[0].name.indexOf('.jpg') !== -1 || files[0].name.indexOf('.png') !== -1)) {
+        img = files[0];
+    }
+
+    if (files !== undefined && files[1] != undefined && files[1] !== undefined &&
+        (files[1].name.indexOf('.mp3') !== -1 || files[1].name.indexOf('.mp4') !== -1 || files[1].name.indexOf('.mov') !== -1)) {
+        media = files[1];
+    }
+
+    formData.append('img', img);
+    formData.append('media', media);
     formData.append('title', titleField.val());
 
     $.ajax({
@@ -53,7 +67,7 @@ function closePopup() {
     popup.style.display = 'none';
     titleField.val(null);
     hideErrorMessage();
-    file = null;
+    files = null;
 }
 
 

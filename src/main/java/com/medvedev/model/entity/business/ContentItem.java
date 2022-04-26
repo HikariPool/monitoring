@@ -26,13 +26,11 @@ public class ContentItem {
     @PostLoad
     private void postLoad() {
         previewPath = Constants.UPLOAD_URL + previewPath;
-        sourcePath = Constants.UPLOAD_URL + sourcePath;
     }
 
     @PrePersist
     @PreUpdate
     private void prePersist() {
         previewPath = previewPath != null ? previewPath.replace(Constants.UPLOAD_URL, "") : null;
-        sourcePath = sourcePath != null ? sourcePath.replace(Constants.UPLOAD_URL, "") : null;
     }
 }

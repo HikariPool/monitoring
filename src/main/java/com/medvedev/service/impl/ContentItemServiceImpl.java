@@ -13,7 +13,6 @@ import com.medvedev.service.ContentItemService;
 import com.medvedev.service.FileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -35,15 +34,21 @@ public class ContentItemServiceImpl implements ContentItemService {
     }
 
     @Override
-    @Transactional
-    public void create(Long sessionId, MultipartFile image, ContentItem contentItem) throws IOException {
+    public void create(Long sessionId, MultipartFile image, MultipartFile media, ContentItem contentItem) throws IOException {
         String imageFileTitle = null;
+        String mediaFileTitle = null;
         if (image != null) {
             imageFileTitle = fileService.write(image.getBytes(),
                     getMemType(image.getOriginalFilename()));
         }
+        if (media != null) {
+            mediaFileTitle = fileService.write(media.getBytes(),
+                    getMemType(media.getOriginalFilename()));
+        }
+
 
         contentItem.setPreviewPath(imageFileTitle);
+        contentItem.setSourcePath(mediaFileTitle);
         sessionRepo.findById(sessionId).get().getContentItems().add(contentItem);
     }
 
