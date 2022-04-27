@@ -3,8 +3,11 @@ let nextButton = document.getElementById('nextTrack');
 let prevButton = document.getElementById('prevTrack');
 let progressBar = document.getElementById('progressIndicator');
 let trackIcon = document.getElementById('trackIcon');
+let musicPlayerWrapper = document.getElementById('musicPlayerWrapper');
 
 let audio = new Audio();
+
+audio.onplay = () => musicPlayerWrapper.style = "display: block";
 
 function playAudio(path, onEnd, onUpdate, imagePath) {
     if (imagePath !== null) {
