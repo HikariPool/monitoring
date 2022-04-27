@@ -1,5 +1,9 @@
 let deleteItem = document.getElementById('deleteItem');
 let infoField = document.getElementById('infoField');
+let addPeopleItem = document.getElementById('addPeopleItem');
+let addPeopleField = document.getElementById('addPeopleField');
+let contentModalView = document.getElementById('contentModalView');
+let addPeopleButton = document.getElementById('addPeopleButton');
 
 deleteItem.addEventListener('click', () => {
     for (let item of itemContainer.children) {
@@ -29,3 +33,19 @@ function removeItem(event) {
         });
     }
 }
+
+
+addPeopleItem.addEventListener('click', () => {
+    showOnClick(contentModalView);
+});
+
+
+addPeopleButton.addEventListener('click', () => {
+    $.ajax({
+        url: '/session/people?session_id=' + workspaceHead.getAttribute('session_id') + '&email=' + addPeopleField.value,
+        type: 'POST',
+        success: () => addPeopleField.value = ''
+    });
+});
+
+

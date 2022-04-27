@@ -19,4 +19,6 @@ public interface SessionService {
     List<SessionDTO> getByUser(User user);
 
     Session getBy(Long sessionId);
+
+    void addParticipant(Long sessionId, String email);
 }

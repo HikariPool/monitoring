@@ -7,7 +7,13 @@
 </head>
 <body>
 <div class="infoField" id="infoField">Select item to remove. Click here to cancel</div>
-<div class="workspaceHead">
+<div id="contentModalView">
+    <div id="addPeopleWrapper">
+        Select peoples to add.
+        <input type="text" id="addPeopleField" placeholder="someone@email.com"><button id="addPeopleButton">+</button></input>
+    </div>
+</div>
+<div id="workspaceHead" class="workspaceHead">
     <h1 id="title"></h1>
     <button id="addButton">
         <svg height="15pt" style="enable-background:new 0 0 409.6 409.6;" version="1.1" viewBox="0 0 409.6 409.6"
@@ -24,7 +30,7 @@
         <path d="m303.347 212.209c25.167 25.167 25.167 65.971 0 91.138s-65.971 25.167-91.138 0-25.167-65.971 0-91.138c25.166-25.167 65.97-25.167 91.138 0"/>
         <path d="m303.347 405.541c25.167 25.167 25.167 65.971 0 91.138s-65.971 25.167-91.138 0-25.167-65.971 0-91.138c25.166-25.167 65.97-25.167 91.138 0"/>
     </svg>
-    <div th:replace="fragments/header :: editMenu"></div>
+    <div th:replace="fragments/header :: editMenuContent"></div>
 </div>
 <div id="listItemContainer"></div>
 <div th:replace="fragments/popups :: create_popup"></div>

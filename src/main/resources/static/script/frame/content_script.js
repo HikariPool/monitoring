@@ -5,6 +5,7 @@ let title = $('#title');
 let itemContainer = document.getElementById('listItemContainer');
 let editButton = document.getElementById('editButton');
 let editMenu = document.getElementById('editMenu');
+let workspaceHead = document.getElementById('workspaceHead');
 
 
 $('#upload').click(openFileChooser);
@@ -88,6 +89,8 @@ function getParam(title) {
 }
 
 function showContentItems(session) {
+    workspaceHead.setAttribute('session_id', session.id);
+
     title.html(session.title);
 
     let contentItems = session.contentItems;
@@ -118,4 +121,5 @@ function showContentItems(session) {
 
 editButton.addEventListener('click', () => {
     showOnClick(editMenu);
+    editMenu.addEventListener('click', () => editMenu.style.display = 'none');
 });

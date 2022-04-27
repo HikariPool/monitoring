@@ -5,3 +5,5 @@
 @import "../elements/workspace_frame_template.css";
 @import "../elements/infoField.css";
 @import "../elements/editMenu.css";
+@import "../elements/editMenuContent.css";
+@import "../elements/contentModalView.css";

@@ -9,6 +9,7 @@ import com.medvedev.model.entity.business.Session;
 import com.medvedev.model.entity.business.User;
 import com.medvedev.model.entity.util.DtoConverter;
 import com.medvedev.repository.SessionRepo;
+import com.medvedev.repository.UserRepo;
 import com.medvedev.service.ContentItemService;
 import com.medvedev.service.FileService;
 import com.medvedev.service.SessionService;
@@ -34,6 +35,8 @@ public class SessionServiceImpl implements SessionService {
     private SessionRepo sessionRepo;
     @Autowired
     private EntityManagerFactory entityManagerFactory;
+    @Autowired
+    private UserRepo userRepo;
 
 
     @Override
@@ -61,12 +64,16 @@ public class SessionServiceImpl implements SessionService {
 
         sessionRepo.save(session);
 
+        createParticipant(session.getId(), user.getId());
+    }
+
+    private void createParticipant(Long sessionId, Long userId) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         entityManager.getTransaction().begin();
 
         Query query = entityManager.createNativeQuery("INSERT INTO PARTICIPANTS VALUES(:user_id, :session_id)");
-        query.setParameter("user_id", user.getId());
-        query.setParameter("session_id", session.getId());
+        query.setParameter("user_id", userId);
+        query.setParameter("session_id", sessionId);
         query.executeUpdate();
 
         entityManager.getTransaction().commit();
@@ -87,7 +94,9 @@ public class SessionServiceImpl implements SessionService {
         return fileTitle.substring(fileTitle.lastIndexOf("."));
     }
 
-    public void update(Session session) {
-
+    @Override
+    public void addParticipant(Long sessionId, String email) {
+        User targetUser = userRepo.findByEmail(email).iterator().next();
+        createParticipant(sessionId, targetUser.getId());
     }
 }
