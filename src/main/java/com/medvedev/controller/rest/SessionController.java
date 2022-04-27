@@ -44,4 +44,9 @@ public class SessionController {
     public SessionDTO getSessionBy(@RequestParam("session_id") Long sessionId) {
         return SessionDTO.convertToDto(sessionService.getBy(sessionId));
     }
+
+    @PostMapping("/people")
+    public void addPeolple(@RequestParam("session_id") Long sessionId, @RequestParam("email") String email) {
+        sessionService.addParticipant(sessionId, email);
+    }
 }
