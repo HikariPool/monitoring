@@ -19,7 +19,7 @@ let files;
 
 
 addButton.addEventListener('click', () => {
-    showOnClick(popup);
+    showAndHighOnClickOut(popup);
 });
 
 function openFileChooser() {
@@ -114,12 +114,12 @@ function showContentItems(session) {
         itemContainer.appendChild(div);
 
         div.onclick = () =>
-            window.parent.playAudio(
-                '/stream/get/' + contentItems[i].sourcePath, undefined, audio => window.top.sync(audio, session.id), contentItems[i].previewPath);
+            window.parent.playContent(
+                '/stream/get/' + contentItems[i].sourcePath, undefined, player => window.top.sync(player, session.id), contentItems[i].previewPath);
     }
 }
 
 editButton.addEventListener('click', () => {
-    showOnClick(editMenu);
+    showAndHighOnClickOut(editMenu);
     editMenu.addEventListener('click', () => editMenu.style.display = 'none');
 });

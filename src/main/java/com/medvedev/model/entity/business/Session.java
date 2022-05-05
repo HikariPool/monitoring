@@ -25,10 +25,10 @@ public class Session {
     private String imagePath;
 
     @CreatedBy
-    @ManyToOne(cascade = CascadeType.DETACH)
+    @ManyToOne(cascade = CascadeType.DETACH)//DETACH
     private User createdBy;
 
-    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)//PERSIST
     @JoinColumn(name = "session_id")
     private List<ContentItem> contentItems;
 

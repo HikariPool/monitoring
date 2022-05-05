@@ -4,6 +4,7 @@
 
 package com.medvedev.model.entity.business;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -26,6 +27,7 @@ public class User implements UserDetails {
     @Column(nullable = false, length = 60)
     private String password;
 
+    @JsonIgnore
     @ManyToMany
     @JoinTable(
             name = "participants",

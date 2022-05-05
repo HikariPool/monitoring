@@ -18,6 +18,7 @@ public class ContentItem {
     private Long id;
     private String title;
     @Column(name = "item_order")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long order;
     private String previewPath;
     private String sourcePath;

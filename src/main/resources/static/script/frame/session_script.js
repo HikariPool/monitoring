@@ -17,7 +17,7 @@ let file;
 
 
 addButton.addEventListener('click', () => {
-    showOnClick(popup);
+    showAndHighOnClickOut(popup);
 });
 
 function openFileChooser() {
@@ -95,5 +95,5 @@ function openSession(sessionId) {
 }
 
 editButton.addEventListener('click', () => {
-    showOnClick(editMenu);
+    showAndHighOnClickOut(editMenu);
 });

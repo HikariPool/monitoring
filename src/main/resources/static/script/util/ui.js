@@ -1,4 +1,4 @@
-function showOnClick(element, postAction) {
+function showAndHighOnClickOut(element, postAction) {
     element.style.display = 'block';
     document.addEventListener('mouseup', (event) => hideIfClickOnOther(event, element, postAction));
 }
