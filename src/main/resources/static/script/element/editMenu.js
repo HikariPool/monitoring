@@ -5,36 +5,22 @@ let addPeopleField = document.getElementById('addPeopleField');
 let contentModalView = document.getElementById('contentModalView');
 let addPeopleButton = document.getElementById('addPeopleButton');
 
-deleteItem.addEventListener('click', () => {
-    for (let item of itemContainer.children) {
-        item.addEventListener('click', () => {
-            removeItem(item.id, item.getAttribute('type'))
-        });
-    }
-    showAndHighOnClickOut(infoField, reloadContent);
+infoField.addEventListener('click', () => {
+    infoField.style.display = 'none';
+    reloadContent();
 });
 
-// function removeItem(event) {
-//     if (event !== undefined &&
-//         (event.target.classList.contains('parentElement') || event.target.parentElement.classList.contains('parentElement'))) {
-//         let item;
-//         let type;
-//
-//         if (event.target.classList.contains('parentElement')) {
-//             item = event.target;
-//             type = event.target.getAttribute('type');
-//         } else if (event.target.parentElement.classList.contains('parentElement')) {
-//             item = event.target.parentElement;
-//             type = event.target.parentElement.getAttribute('type');
-//         }
-//
-//         $.ajax({
-//             url: '/generic/remove?type=' + type + '&id=' + item.id,
-//             type: 'POST',
-//             success: reloadContent
-//         });
-//     }
-// }
+deleteItem.addEventListener('click', () => {
+    infoField.style.display = 'block';
+
+    for (let item of itemContainer.children) {
+        item.addEventListener('click', () => {
+            removeItem(item.id, item.getAttribute('type'));
+            infoField.style.display = 'none';
+        });
+    }
+});
+
 function removeItem(id, type) {
     $.ajax({
         url: '/generic/remove?type=' + type + '&id=' + id,

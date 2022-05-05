@@ -36,14 +36,16 @@ function addContentItem() {
     let img;
     let media;
 
-    if (files !== undefined && files[0] != undefined && files[0] !== undefined &&
-        (files[0].name.indexOf('.jpg') !== -1 || files[0].name.indexOf('.png') !== -1)) {
-        img = files[0];
-    }
+    for (let file of files) {
+        if (file !== undefined && file != undefined && file !== undefined &&
+            (file.name.indexOf('.jpg') !== -1 || file.name.indexOf('.png') !== -1)) {
+            img = file;
+        }
 
-    if (files !== undefined && files[1] != undefined && files[1] !== undefined &&
-        (files[1].name.indexOf('.mp3') !== -1 || files[1].name.indexOf('.mp4') !== -1 || files[1].name.indexOf('.mov') !== -1)) {
-        media = files[1];
+        if (file !== undefined && file != undefined && file !== undefined &&
+            (file.name.indexOf('.mp3') !== -1 || file.name.indexOf('.mp4') !== -1 || file.name.indexOf('.mov') !== -1)) {
+            media = file;
+        }
     }
 
     formData.append('img', img);

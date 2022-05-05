@@ -9,19 +9,19 @@ let videoWrapper = document.getElementById('videoWrapper');
 let video = document.getElementById('videoPlayer');
 let audio = new Audio();
 
-// audio.onplay = () => musicPlayerWrapper.style = "display: block";
-// video.onplay = () => videoWrapper.style = 'display: block';
 
-function playContent(path, onEnd, onUpdate, imagePath) {
-
+function playContent(path, onEnd, onUpdate, imagePath, currentTime) {
+    stillSyncPlay = true;
     let player;
 
     if (path !== undefined && path.includes('.mp3')) {
         player = audio;
         showAndHighOnClickOut(musicPlayerWrapper, e => stopPlay(audio));
+        playButton.onclick = () => stopPlay(player, onEnd, onUpdate);
     } else if (path !== undefined && (path.includes('.mp4')
         || path.includes('.mov'))) {
         player = video;
+        video.onpause = () => stopPlay(player, onEnd, onUpdate);
         showAndHighOnClickOut(videoWrapper, e => stopPlay(video));
     }
 
@@ -32,9 +32,11 @@ function playContent(path, onEnd, onUpdate, imagePath) {
     if (path !== null) {
         player.src = path;
     }
+    if (currentTime !== undefined && currentTime > 0.0) {
+        player.currentTime = currentTime;
+    }
     player.play();
-    //todo change play icon
-    //todo change preview playing track
+
     player.ontimeupdate = event => {
         updateProgressBar(event.target);
         if (onUpdate !== undefined) {
@@ -47,13 +49,15 @@ function playContent(path, onEnd, onUpdate, imagePath) {
             onEnd();
         }
     };
-    playButton.onclick = () => stopPlay(player, onEnd, onUpdate);
 }
 
 function stopPlay(player, onEnd, onUpdate) {
-    player.ontimeupdate = null;
+    stillSyncPlay = false;
     player.pause();
-    playButton.onclick = () => playContent(null, onEnd, onUpdate, null);
+    player.ontimeupdate = null;
+    if (player.src !== undefined && player.src.includes('.mp3')) {
+        playButton.onclick = () => playContent(player.src, onEnd, onUpdate, trackIcon.src, player.currentTime);
+    }
 }
 
 function updateProgressBar(audio) {

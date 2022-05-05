@@ -1,4 +1,5 @@
 let playListenerInterval;
+let stillSyncPlay = true;
 
 
 function sync(audio, sessionId) {
@@ -11,8 +12,10 @@ function sync(audio, sessionId) {
                 audio.pause();
                 playListenerInterval = setInterval(() => sync(audio, sessionId), 1000);
             } else {
-                clearInterval(playListenerInterval);
-                audio.play();
+                if (stillSyncPlay) {
+                    clearInterval(playListenerInterval);
+                    audio.play();
+                }
             }
         }
     });
