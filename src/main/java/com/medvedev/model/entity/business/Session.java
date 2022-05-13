@@ -25,7 +25,7 @@ public class Session {
     private String imagePath;
 
     @CreatedBy
-    @ManyToOne(cascade = CascadeType.DETACH)//DETACH
+    @ManyToOne(cascade = CascadeType.DETACH)
     private User createdBy;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)//PERSIST
