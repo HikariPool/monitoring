@@ -1,8 +1,8 @@
-package com.medvedev.service.impl;
+package com.sahno.service.impl;
 
-import com.medvedev.model.entity.business.User;
-import com.medvedev.repository.UserRepo;
-import com.medvedev.service.UserService;
+import com.sahno.model.entity.business.User;
+import com.sahno.repository.UserRepo;
+import com.sahno.service.UserService;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

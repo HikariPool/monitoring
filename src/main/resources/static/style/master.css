@@ -1,14 +1,13 @@
 @import "font.css";
 @import "ui_element/button.css";
 @import "ui_element/input.css";
-@import "elements/liquid.css";
 
 
 body {
     position: fixed;
     height: 100%;
     width: 100%;
-    background-color: #171727;
+    background-color: white;
     overflow: hidden hidden;
     font-family: Roboto, serif;
     font-weight: bold;
@@ -26,7 +25,7 @@ a {
     cursor: pointer;
     font-weight: bold;
     font-size: 14.5px;
-    color: #4EB8E0;
+    color:  #F3C301;
     text-decoration: none;
     margin: 10px 10px;
 }
