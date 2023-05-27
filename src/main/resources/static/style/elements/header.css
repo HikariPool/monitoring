@@ -1,3 +1,4 @@
+@import "menu.css";
 
 
 #header {
@@ -10,7 +11,7 @@
     opacity: 0.8;
     backdrop-filter: blur(5px);
     box-shadow: 0 15px 15px rgba(0, 0, 0, 0.34);
-    background-color:  #87C159;
+    background-color: #1e1e30;
 }
 
 #userIcon {
@@ -34,6 +35,10 @@
     position: absolute;
     top: 4px;
     left: 30px;
-    color:  #F3C301;
+    color: #87C159;
     font-size: 24px;
+}
+
+#homeIcon {
+    fill: #52c4ef;
 }
