@@ -5,9 +5,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class JDBCUtil {
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/db_kurs?serverTimezone=UTC&characterEncoding=utf8";
-    private static final String DB_USER = "root";
-    private static final String DB_PASSWORD = "root";
+    private static final String DB_URL = "jdbc:postgresql://localhost:5432/postgres";
+    private static final String DB_USER = "ploshadka";
+    private static final String DB_PASSWORD = "123456";
 
 
     public static Connection getConnection() throws SQLException {

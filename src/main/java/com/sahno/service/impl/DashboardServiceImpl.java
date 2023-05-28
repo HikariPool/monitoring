@@ -1,15 +1,19 @@
 package com.sahno.service.impl;
 
+import com.sahno.jdbc.JdbcService;
 import com.sahno.model.dto.DashboardDto;
 import com.sahno.model.entity.business.Dashboard;
+import com.sahno.model.entity.business.DashboardRes;
 import com.sahno.repository.DashboardRepo;
 import com.sahno.repository.DashboardResRepo;
 import com.sahno.service.DashboardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class DashboardServiceImpl implements DashboardService {
@@ -17,6 +21,8 @@ public class DashboardServiceImpl implements DashboardService {
     private DashboardRepo dashboardRepo;
     @Autowired
     private DashboardResRepo dashboardResRepo;
+    @Autowired
+    private JdbcService jdbcService;
 
 
     @Override
@@ -38,14 +44,25 @@ public class DashboardServiceImpl implements DashboardService {
     }
 
     @Override
+    @Transactional
     public void refresh(Long id) {
-        dashboardResRepo.clear(id);
         Dashboard dashboard = dashboardRepo.findById(id).get();
+        String query = dashboard.getQuery();
+        if (query != null) {
+            dashboardResRepo.clear(id);
 
+            List<String> jsons = jdbcService.executeQuery(query);
+
+            List<DashboardRes> results = jsons.stream()
+                    .map(json -> DashboardRes.builder().result(json).build())
+                    .collect(Collectors.toList());
+
+            dashboard.setResults(results);
+        }
     }
 
     @Override
-    public void refreshAll(){
+    public void refreshAll() {
         dashboardRepo.findAll().stream().forEach(dashboard -> refresh(dashboard.getId()));
     }
 }

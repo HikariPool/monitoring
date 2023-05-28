@@ -30,11 +30,12 @@ function saveQuery() {
 
 
 runButton.addEventListener('click', () => {
-    // $.ajax({
-    //     url: '/session/people?session_id=' + workspaceHead.getAttribute('session_id') + '&email=' + addPeopleField.value,
-    //     type: 'POST',
-    //     success: () => addPeopleField.value = ''
-    // });
+    $.ajax({
+        url: '/dashboard/run?id=' +  getParam("dashboard_id"),
+        type: 'POST'
+    });
+
+    reloadContent()
 });
 
 
