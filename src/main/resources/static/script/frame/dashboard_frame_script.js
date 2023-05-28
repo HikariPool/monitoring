@@ -60,29 +60,29 @@ function reloadContent() {
     itemContainer.innerHTML = '';
 
     $.ajax({
-        url: '/session/all',
+        url: '/dashboard/all',
         type: 'GET',
         success: data => showSessions(data)
     });
 }
 
-function showSessions(sessions) {
-    for (let i = 0; i < sessions.length; i++) {
+function showSessions(dashboards) {
+    for (let i = 0; i < dashboards.length; i++) {
         let div = document.createElement('div');
         div.className = 'gridListItem parentElement';
-        div.id = sessions[i].id;
+        div.id = dashboards[i].id;
         div.setAttribute('type', 'session');
 
 
-        let img = document.createElement('img');
-        img.className = 'gridListItemImage';
-        img.src = sessions[i].imagePath;
+        let count = document.createElement('h3');
+        count.className = 'gridListItemCount';
+        count.textContent = dashboards[i].countRes;
 
         let h3 = document.createElement('h3');
         h3.className = 'gridListItemTitle';
-        h3.textContent = sessions[i].title;
+        h3.textContent = dashboards[i].name;
 
-        div.appendChild(img);
+        div.appendChild(count);
         div.appendChild(h3);
         itemContainer.appendChild(div);
 
