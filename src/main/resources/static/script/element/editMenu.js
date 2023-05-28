@@ -14,6 +14,7 @@ deleteItem.addEventListener('click', () => {
     infoField.style.display = 'block';
 
     for (let item of itemContainer.children) {
+
         item.addEventListener('click', () => {
             removeItem(item.id, item.getAttribute('type'));
             infoField.style.display = 'none';
@@ -23,7 +24,7 @@ deleteItem.addEventListener('click', () => {
 
 function removeItem(id, type) {
     $.ajax({
-        url: '/generic/remove?type=' + type + '&id=' + id,
+        url: '/dashboard/remove?id=' + id,
         type: 'POST',
         success: reloadContent
     });

@@ -1,11 +1,10 @@
 package com.sahno.controller.rest;
 
 import com.sahno.model.dto.DashboardDto;
+import com.sahno.repository.DashboardRepo;
 import com.sahno.service.DashboardService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -14,10 +13,17 @@ import java.util.List;
 public class DashboardController {
     @Autowired
     private DashboardService dashboardService;
+    @Autowired
+    private DashboardRepo dashboardRepo;
 
 
     @GetMapping("/all")
     public List<DashboardDto> getAll(){
         return dashboardService.getAll();
+    }
+
+    @PostMapping("/remove")
+    public void remove(@RequestParam("id") Long id){
+        dashboardRepo.deleteById(id);
     }
 }

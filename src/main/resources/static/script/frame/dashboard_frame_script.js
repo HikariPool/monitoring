@@ -6,46 +6,33 @@ let titleField = $('#titleField');
 let itemContainer = document.getElementById('listItemContainer');
 
 
-$('#upload').click(openFileChooser);
-$('#createButton').click(createSession);
+$('#createButton').click(createDashboard);
 
 
 reloadContent();
-
-
-let file;
 
 
 addButton.addEventListener('click', () => {
     showAndHighOnClickOut(popup);
 });
 
-function openFileChooser() {
-    var input = document.createElement('input');
-    input.type = 'file';
-
-    input.onchange = e => file = e.target.files[0];
-    input.click();
-}
-
-function createSession() {
-    let formData = new FormData;
-
-    formData.append('img', file);
-    formData.append('title', titleField.val());
-
-    $.ajax({
-        url: '/session/create',
-        contentType: false,
-        processData: false,
-        data: formData,
-        type: 'POST',
-        success: () => {
-            closePopup();
-            reloadContent();
-        },
-        error: xhr => showError(JSON.parse(xhr.responseText).message)
-    });
+function createDashboard() {
+    // let formData = new FormData;
+    //
+    // formData.append('title', titleField.val());
+    //
+    // $.ajax({
+    //     url: '/session/create',
+    //     contentType: false,
+    //     processData: false,
+    //     data: formData,
+    //     type: 'POST',
+    //     success: () => {
+    //         closePopup();
+    //         reloadContent();
+    //     },
+    //     error: xhr => showError(JSON.parse(xhr.responseText).message)
+    // });
 }
 
 function closePopup() {
@@ -62,11 +49,11 @@ function reloadContent() {
     $.ajax({
         url: '/dashboard/all',
         type: 'GET',
-        success: data => showSessions(data)
+        success: data => show(data)
     });
 }
 
-function showSessions(dashboards) {
+function show(dashboards) {
     for (let i = 0; i < dashboards.length; i++) {
         let div = document.createElement('div');
         div.className = 'gridListItem parentElement';
@@ -86,12 +73,12 @@ function showSessions(dashboards) {
         div.appendChild(h3);
         itemContainer.appendChild(div);
 
-        div.onclick = () => openSession(div.id);
+        div.onclick = () => open(div.id);
     }
 }
 
-function openSession(sessionId) {
-    window.parent.postMessage('/frame/content_frame?session_id=' + sessionId);
+function open(dashboardId) {
+    window.parent.postMessage('/frame/content_frame?dashboard_id=' + dashboardId);
 }
 
 editButton.addEventListener('click', () => {
