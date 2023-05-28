@@ -17,22 +17,18 @@ addButton.addEventListener('click', () => {
 });
 
 function createDashboard() {
-    // let formData = new FormData;
-    //
-    // formData.append('title', titleField.val());
-    //
-    // $.ajax({
-    //     url: '/session/create',
-    //     contentType: false,
-    //     processData: false,
-    //     data: formData,
-    //     type: 'POST',
-    //     success: () => {
-    //         closePopup();
-    //         reloadContent();
-    //     },
-    //     error: xhr => showError(JSON.parse(xhr.responseText).message)
-    // });
+    $.ajax({
+        url: '/dashboard/create',
+        data: {
+            "name": titleField.val()
+        },
+        type: 'POST',
+        success: () => {
+            closePopup();
+            reloadContent();
+        },
+        error: xhr => showError(JSON.parse(xhr.responseText).message)
+    });
 }
 
 function closePopup() {

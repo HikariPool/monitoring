@@ -26,4 +26,9 @@ public class DashboardController {
     public void remove(@RequestParam("id") Long id){
         dashboardRepo.deleteById(id);
     }
+
+    @PostMapping("/create")
+    public void create(DashboardDto dto){
+        dashboardRepo.saveAndFlush(DashboardDto.convertToEntity(dto));
+    }
 }
