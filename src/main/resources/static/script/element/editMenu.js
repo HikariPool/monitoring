@@ -1,46 +1,40 @@
-let deleteItem = document.getElementById('deleteItem');
-let infoField = document.getElementById('infoField');
-let addPeopleItem = document.getElementById('addPeopleItem');
-let addPeopleField = document.getElementById('addPeopleField');
-let contentModalView = document.getElementById('contentModalView');
-let addPeopleButton = document.getElementById('addPeopleButton');
+let runButton = document.getElementById('runButton');
+let saveButton = document.getElementById('saveButton');
+let editItem = document.getElementById('editItem');
+let queryInput = document.getElementById('queryInput');
 
-infoField.addEventListener('click', () => {
-    infoField.style.display = 'none';
-    reloadContent();
-});
 
-deleteItem.addEventListener('click', () => {
-    infoField.style.display = 'block';
+editItem.onclick = () => {
+    runButton.hidden = true
+    saveButton.hidden = false
+    queryInput.hidden = false
+}
 
-    for (let item of itemContainer.children) {
+saveButton.onclick = () => {
+    runButton.hidden = false
+    saveButton.hidden = true
+    queryInput.hidden = true
 
-        item.addEventListener('click', () => {
-            removeItem(item.id, item.getAttribute('type'));
-            infoField.style.display = 'none';
-        });
-    }
-});
+    saveQuery()
+}
 
-function removeItem(id, type) {
+function saveQuery() {
     $.ajax({
-        url: '/dashboard/remove?id=' + id,
-        type: 'POST',
-        success: reloadContent
+        url: '/dashboard/updateQuery?id=' + getParam("dashboard_id"),
+        data: {
+            "query": queryInput.value
+        },
+        type: 'POST'
     });
 }
 
-addPeopleItem.addEventListener('click', () => {
-    showAndHighOnClickOut(contentModalView);
-});
 
-
-addPeopleButton.addEventListener('click', () => {
-    $.ajax({
-        url: '/session/people?session_id=' + workspaceHead.getAttribute('session_id') + '&email=' + addPeopleField.value,
-        type: 'POST',
-        success: () => addPeopleField.value = ''
-    });
+runButton.addEventListener('click', () => {
+    // $.ajax({
+    //     url: '/session/people?session_id=' + workspaceHead.getAttribute('session_id') + '&email=' + addPeopleField.value,
+    //     type: 'POST',
+    //     success: () => addPeopleField.value = ''
+    // });
 });
 
 

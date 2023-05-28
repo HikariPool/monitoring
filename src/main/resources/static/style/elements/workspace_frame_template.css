@@ -17,6 +17,18 @@ body {
     transform: translate(-50%);
 }
 
+#runButton{
+    position: fixed;
+    right: 5px;
+    top: 5px;
+}
+
+#saveButton{
+    position: fixed;
+    right: 5px;
+    top: 44px;
+}
+
 #listItemContainer {
     margin-bottom: 100px;
     width: 100%;
@@ -37,6 +49,12 @@ body {
     height: 25px;
     width: 25px;
     border-radius: 85px;
+}
+#queryInput{
+    height: 80%;
+    margin: 10px;
+    width: 80%;
+    position: fixed;
 }
 
 #editButton > svg {

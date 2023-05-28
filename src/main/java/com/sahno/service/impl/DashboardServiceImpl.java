@@ -27,4 +27,10 @@ public class DashboardServiceImpl implements DashboardService {
         });
         return res;
     }
+
+    @Override
+    public void updateQuery(Long id, String query) {
+        dashboardRepo.findById(id).get().setQuery(query);
+        dashboardRepo.flush();
+    }
 }

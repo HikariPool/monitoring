@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface DashboardService {
     List<DashboardDto> getAll();
+
+    void updateQuery(Long id, String query);
 }

@@ -1,4 +1,3 @@
-let saveButton = document.getElementById('saveButton');
 let title = $('#title');
 let itemContainer = document.getElementById('listItemContainer');
 let editButton = document.getElementById('editButton');
@@ -19,7 +18,7 @@ function reloadContent() {
     $.ajax({
         url: '/dashboard/find?id=' + getParam('dashboard_id'),
         type: 'GET',
-        success: data => showContentItems(data)
+        success: data => show(data)
     });
 }
 
@@ -29,9 +28,10 @@ function getParam(title) {
     return urlParams.get(title);
 }
 
-function showContentItems(dashboard) {
+function show(dashboard) {
     workspaceHead.setAttribute('dashboard_id', dashboard.id);
 
+    queryInput.value = dashboard.query
     title.html(dashboard.name);
 
     let dashboardResDtos = dashboard.dashboardResDtos;

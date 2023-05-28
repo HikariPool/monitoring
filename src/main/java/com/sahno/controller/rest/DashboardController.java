@@ -36,4 +36,9 @@ public class DashboardController {
     public DashboardDto findBy(@RequestParam("id") Long id){
         return DashboardDto.convertToDto(dashboardRepo.findById(id).get());
     }
+
+    @PostMapping("/updateQuery")
+    public void updateQuery(@RequestParam("id") Long id, DashboardDto dto){
+        dashboardService.updateQuery(id, dto.getQuery());
+    }
 }
