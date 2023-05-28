@@ -5,53 +5,13 @@ let editButton = document.getElementById('editButton');
 let editMenu = document.getElementById('editMenu');
 let workspaceHead = document.getElementById('workspaceHead');
 
-
-$('#createButton').click(addContentItem);
-
-
 reloadContent();
-
 
 
 saveButton.addEventListener('click', () => {
     saveButton.hidden = true
 
 });
-
-
-function addContentItem() {
-    let formData = new FormData;
-    let img;
-    let media;
-
-    for (let file of files) {
-        if (file !== undefined && file != undefined && file !== undefined &&
-            (file.name.indexOf('.jpg') !== -1 || file.name.indexOf('.png') !== -1)) {
-            img = file;
-        }
-
-        if (file !== undefined && file != undefined && file !== undefined &&
-            (file.name.indexOf('.mp3') !== -1 || file.name.indexOf('.mp4') !== -1 || file.name.indexOf('.mov') !== -1)) {
-            media = file;
-        }
-    }
-
-    formData.append('img', img);
-    formData.append('media', media);
-    formData.append('title', titleField.val());
-
-    $.ajax({
-        url: '/session/content/create?session_id=' + getParam('session_id'),
-        contentType: false,
-        processData: false,
-        data: formData,
-        type: 'POST',
-        success: () => {
-            reloadContent();
-        },
-        error: xhr => showError(JSON.parse(xhr.responseText).message)
-    });
-}
 
 function reloadContent() {
     itemContainer.innerHTML = '';
@@ -75,17 +35,41 @@ function showContentItems(dashboard) {
     title.html(dashboard.name);
 
     let dashboardResDtos = dashboard.dashboardResDtos;
-    for (let i = 0; i < dashboardResDtos.length; i++) {
-        let div = document.createElement('div');
-        div.className = 'lineListItem parentElement';
-        div.id = dashboardResDtos[i].id;
-        div.setAttribute('type', 'contentItem');
 
-
-
-        itemContainer.appendChild(div);
+    if (dashboardResDtos === null || dashboardResDtos === undefined || dashboardResDtos[0] === null || dashboardResDtos[0] === undefined) {
+        return
     }
+
+    let table = createHeaders(dashboardResDtos);
+
+    for (let obj of dashboardResDtos) {
+        obj = JSON.parse(obj.result)
+        let tr = document.createElement('tr');
+        for (let key of Object.keys(obj)) {
+            let td = document.createElement('td');
+            td.textContent = obj[key]
+            tr.appendChild(td)
+            table.appendChild(tr)
+        }
+    }
+    itemContainer.appendChild(table);
 }
+
+function createHeaders(dashboardResDtos) {
+    let resObj = JSON.parse(dashboardResDtos[0].result)
+
+    let table = document.createElement('table');
+
+    let header = document.createElement('tr');
+    for (let key of Object.keys(resObj)) {
+        let th = document.createElement('th');
+        th.textContent = key
+        header.appendChild(th)
+    }
+    table.appendChild(header)
+    return table
+}
+
 
 editButton.addEventListener('click', () => {
     showAndHighOnClickOut(editMenu);

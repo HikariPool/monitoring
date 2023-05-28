@@ -6,7 +6,6 @@ import org.modelmapper.ModelMapper;
 
 @Data
 public class DashboardResDto {
-    private Long id;
     private String result;
 
 
