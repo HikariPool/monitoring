@@ -31,4 +31,9 @@ public class DashboardController {
     public void create(DashboardDto dto){
         dashboardRepo.saveAndFlush(DashboardDto.convertToEntity(dto));
     }
+
+    @GetMapping("/find")
+    public DashboardDto findBy(@RequestParam("id") Long id){
+        return DashboardDto.convertToDto(dashboardRepo.findById(id).get());
+    }
 }
