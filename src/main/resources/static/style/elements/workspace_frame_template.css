@@ -8,8 +8,8 @@ body {
     width: 100%;
     left: 50%;
     margin-bottom: 10px;
-    background: -webkit-linear-gradient(to right, #134e5e, #71b280);
-    background: linear-gradient(to right, #134e5e, #71b280);
+    background: -webkit-linear-gradient(to right, #a18e13, #8a8f5d);
+    background: linear-gradient(to right, #a18e13, #8a8f5d);
     opacity: 0.8;
     backdrop-filter: blur(5px);
     border-bottom-left-radius: 30px;
