@@ -41,4 +41,9 @@ public class DashboardController {
     public void updateQuery(@RequestParam("id") Long id, DashboardDto dto){
         dashboardService.updateQuery(id, dto.getQuery());
     }
+
+    @PostMapping("/run")
+    public void run(@RequestParam("id") Long id){
+        dashboardService.refresh(id);
+    }
 }

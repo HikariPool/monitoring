@@ -3,6 +3,7 @@ package com.sahno.service.impl;
 import com.sahno.model.dto.DashboardDto;
 import com.sahno.model.entity.business.Dashboard;
 import com.sahno.repository.DashboardRepo;
+import com.sahno.repository.DashboardResRepo;
 import com.sahno.service.DashboardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,8 @@ import java.util.List;
 public class DashboardServiceImpl implements DashboardService {
     @Autowired
     private DashboardRepo dashboardRepo;
+    @Autowired
+    private DashboardResRepo dashboardResRepo;
 
 
     @Override
@@ -32,5 +35,17 @@ public class DashboardServiceImpl implements DashboardService {
     public void updateQuery(Long id, String query) {
         dashboardRepo.findById(id).get().setQuery(query);
         dashboardRepo.flush();
+    }
+
+    @Override
+    public void refresh(Long id) {
+        dashboardResRepo.clear(id);
+        Dashboard dashboard = dashboardRepo.findById(id).get();
+
+    }
+
+    @Override
+    public void refreshAll(){
+        dashboardRepo.findAll().stream().forEach(dashboard -> refresh(dashboard.getId()));
     }
 }

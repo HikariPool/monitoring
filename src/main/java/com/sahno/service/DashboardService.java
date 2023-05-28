@@ -8,4 +8,8 @@ public interface DashboardService {
     List<DashboardDto> getAll();
 
     void updateQuery(Long id, String query);
+
+    void refresh(Long id);
+
+    void refreshAll();
 }
