@@ -62,6 +62,7 @@ public class DashboardServiceImpl implements DashboardService {
     }
 
     @Override
+    @Transactional
     public void refreshAll() {
         dashboardRepo.findAll().stream().forEach(dashboard -> refresh(dashboard.getId()));
     }
