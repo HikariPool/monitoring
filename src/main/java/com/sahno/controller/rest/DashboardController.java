@@ -46,4 +46,9 @@ public class DashboardController {
     public void run(@RequestParam("id") Long id){
         dashboardService.refresh(id);
     }
+
+    @PostMapping("/delete")
+    public void delete(@RequestParam("id") Long id){
+        dashboardRepo.deleteById(id);
+    }
 }

@@ -1,21 +1,52 @@
 let runButton = document.getElementById('runButton');
+let deleteItem = document.getElementById('deleteItem');
 let saveButton = document.getElementById('saveButton');
 let editItem = document.getElementById('editItem');
 let queryInput = document.getElementById('queryInput');
 
 
-editItem.onclick = () => {
-    runButton.hidden = true
-    saveButton.hidden = false
-    queryInput.hidden = false
+if (runButton != null) {
+    editItem.onclick = () => {
+        runButton.hidden = true
+        saveButton.hidden = false
+        queryInput.hidden = false
+    }
+
+    saveButton.onclick = () => {
+        runButton.hidden = false
+        saveButton.hidden = true
+        queryInput.hidden = true
+
+        saveQuery()
+    }
+
+    runButton.addEventListener('click', () => {
+        $.ajax({
+            url: '/dashboard/run?id=' + getParam("dashboard_id"),
+            type: 'POST'
+        });
+
+        reloadContent()
+    });
 }
 
-saveButton.onclick = () => {
-    runButton.hidden = false
-    saveButton.hidden = true
-    queryInput.hidden = true
+deleteItem.addEventListener('click', () => {
+    infoField.style.display = 'block';
 
-    saveQuery()
+    for (let item of itemContainer.children) {
+        item.addEventListener('click', () => {
+            removeItem(item.id, item.getAttribute('type'));
+            infoField.style.display = 'none';
+        });
+    }
+});
+
+function removeItem(id, type) {
+    $.ajax({
+        url: '/dashboard/delete?id=' + id,
+        type: 'POST',
+        success: reloadContent
+    });
 }
 
 function saveQuery() {
@@ -27,15 +58,3 @@ function saveQuery() {
         type: 'POST'
     });
 }
-
-
-runButton.addEventListener('click', () => {
-    $.ajax({
-        url: '/dashboard/run?id=' +  getParam("dashboard_id"),
-        type: 'POST'
-    });
-
-    reloadContent()
-});
-
-
