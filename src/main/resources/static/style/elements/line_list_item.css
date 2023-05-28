@@ -20,6 +20,7 @@ table, th, td {
 }
 
 table {
+    width: 100%;
     transform: translate(-50%);
     border-spacing: 0;
     border-collapse: collapse;
