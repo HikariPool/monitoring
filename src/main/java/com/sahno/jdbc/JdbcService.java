@@ -2,7 +2,6 @@ package com.sahno.jdbc;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import com.sahno.util.JDBCUtil;
 import lombok.SneakyThrows;
 import org.springframework.stereotype.Service;
 

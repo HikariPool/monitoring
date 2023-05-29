@@ -1,8 +1,6 @@
 package com.sahno.model.dto;
 
 import com.sahno.model.entity.business.Dashboard;
-import com.sahno.model.entity.business.DashboardRes;
-import com.sahno.model.entity.business.User;
 import lombok.Data;
 import org.modelmapper.ModelMapper;
 
