@@ -2,6 +2,7 @@ let runButton = document.getElementById('runButton');
 let deleteItem = document.getElementById('deleteItem');
 let saveButton = document.getElementById('saveButton');
 let editItem = document.getElementById('editItem');
+let exportItem = document.getElementById('exportItem');
 let queryInput = document.getElementById('queryInput');
 
 
@@ -28,6 +29,10 @@ if (runButton != null) {
 
         reloadContent()
     });
+
+    exportItem.onclick = () => {
+        window.location.replace("/export?id=" + getParam("dashboard_id"))
+    }
 }
 
 deleteItem.addEventListener('click', () => {
