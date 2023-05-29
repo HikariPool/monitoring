@@ -3,6 +3,9 @@ let addButton = document.getElementById('addButton');
 let editButton = document.getElementById('editButton');
 let editMenu = document.getElementById('editMenu');
 let titleField = $('#titleField');
+let urlField = $('#urlField');
+let usernameField = $('#usernameField');
+let passwordField = $('#passwordField');
 let itemContainer = document.getElementById('listItemContainer');
 
 
@@ -20,7 +23,10 @@ function createDashboard() {
     $.ajax({
         url: '/dashboard/create',
         data: {
-            "name": titleField.val()
+            "name": titleField.val(),
+            "url": urlField.val(),
+            "username": usernameField.val(),
+            "password": passwordField.val()
         },
         type: 'POST',
         success: () => {

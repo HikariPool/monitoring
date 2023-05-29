@@ -14,6 +14,10 @@ public class Dashboard {
     private Long id;
     private String name;
     private String query;
+    private String url;
+    private String username;
+    private String password;
+    private String dbType;
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)//PERSIST
     @JoinColumn(name = "dashboard_id")

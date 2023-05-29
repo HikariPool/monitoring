@@ -15,8 +15,8 @@ public class JdbcService {
     private static final ObjectMapper MAPPER = new ObjectMapper();
 
     @SneakyThrows
-    public List<String> executeQuery(String query){
-        Connection connection = JDBCUtil.getConnection();
+    public List<String> executeQuery(String url, String username, String password,String query){
+        Connection connection = DriverManager.getConnection(url, username, password);;
         connection.beginRequest();
 
         List<String> results = new ArrayList<>();

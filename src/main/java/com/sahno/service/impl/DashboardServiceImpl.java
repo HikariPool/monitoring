@@ -51,7 +51,7 @@ public class DashboardServiceImpl implements DashboardService {
         if (query != null) {
             dashboardResRepo.clear(id);
 
-            List<String> jsons = jdbcService.executeQuery(query);
+            List<String> jsons = jdbcService.executeQuery(dashboard.getUrl(), dashboard.getUsername(), dashboard.getPassword(), query);
 
             List<DashboardRes> results = jsons.stream()
                     .map(json -> DashboardRes.builder().result(json).build())

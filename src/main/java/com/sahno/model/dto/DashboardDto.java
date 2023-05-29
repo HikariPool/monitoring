@@ -15,6 +15,10 @@ public class DashboardDto {
     private String name;
     private long countRes;
     private String query;
+    private String url;
+    private String username;
+    private String password;
+    private String dbType;
     private List<DashboardResDto> dashboardResDtos;
 
 
