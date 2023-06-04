@@ -15,11 +15,10 @@ public class JdbcService {
 
     @SneakyThrows
     public List<String> executeQuery(String url, String username, String password,String query){
-        Connection connection = DriverManager.getConnection(url, username, password);;
+        Connection connection = DriverManager.getConnection(url, username, password);
         connection.beginRequest();
 
         List<String> results = new ArrayList<>();
-        String json;
 
         Statement statement = connection.createStatement();
         ResultSet rs = statement.executeQuery(query);

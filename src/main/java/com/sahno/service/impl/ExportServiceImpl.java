@@ -56,16 +56,17 @@ public class ExportServiceImpl implements ExportService {
     }
 
     private static void fillData(List<DashboardRes> results, HSSFSheet sheet) throws JsonProcessingException {
-        int j = 1;
-        for (int i = 0; j <= results.size(); j++) {
-            HSSFRow row = sheet.createRow(j);
-            JsonNode jsonTree = OBJECT_MAPPER.readTree(results.get(i).getResult());
+        int rowIndex = 1;
+        for (; rowIndex <= results.size(); rowIndex++) {
+            int columnIndex = 0;
+            HSSFRow row = sheet.createRow(rowIndex);
+            JsonNode jsonTree = OBJECT_MAPPER.readTree(results.get(columnIndex).getResult());
 
             for (Iterator<JsonNode> it = jsonTree.elements(); it.hasNext(); ) {
                 JsonNode jsonNode = it.next();
 
-                row.createCell(i).setCellValue(jsonNode.asText());
-                i++;
+                row.createCell(columnIndex).setCellValue(jsonNode.asText());
+                columnIndex++;
             }
         }
     }
