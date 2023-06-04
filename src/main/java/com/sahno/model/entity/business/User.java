@@ -23,16 +23,7 @@ public class User implements UserDetails {
     @Column(nullable = false, length = 60)
     private String password;
 
-//    @JsonIgnore
-//    @ManyToMany
-//    @JoinTable(
-//            name = "participants",
-//            joinColumns = @JoinColumn(name = "user_id"),
-//            inverseJoinColumns = @JoinColumn(name = "session_id"))
-//    private List<Session> sessions;
 
-
-    //// TODO: 7/23/2020 implement all methods
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;
